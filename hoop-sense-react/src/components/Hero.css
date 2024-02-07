@@ -1,0 +1,6 @@
+/* Add this in your global CSS file */
+@media (max-width: 400px) {
+  .custom-bottom-adjustment {
+      bottom: 10%; /* Adjust this value as needed */
+  }
+}

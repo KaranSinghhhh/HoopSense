@@ -1,0 +1,114 @@
+.hero-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #e5e7eb; /* bg-zinc-200 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .hero-content {
+    max-width: 1240px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px; /* px-2 py-8 */
+  }
+  
+  .showcase-text,
+  .subheading {
+    font-size: 1.25rem; /* text-2xl */
+  }
+  
+  .main-heading {
+    padding: 12px 0; /* py-3 */
+    font-size: 3.75rem; /* text-7xl */
+    font-weight: bold;
+  }
+  
+  .get-started-btn {
+    padding: 12px 24px; /* py-3 px-6 */
+    margin-top: 16px; /* my-4 */
+    width: 60%; /* sm:w-[60%] */
+  }
+  
+  .image-container img {
+    width: 100%;
+    padding: 16px; /* px-4 */
+  }
+  
+  .services-section {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e5e7eb; /* bg-zinc-200 */
+    border: 1px solid #cbd5e1; /* border-slate-300 */
+    border-radius: 0.5rem; /* rounded-xl */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-xl */
+    display: flex;
+    flex-direction: column;
+    padding: 12px; /* py-3 */
+    min-width: 760px; /* md:min-w-[760px] */
+  }
+  
+  .services-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 16px; /* px-4 */
+  }
+  
+  .service-item {
+    display: flex;
+    padding: 12px; /* px-4 py-3 */
+    color: #64748b; /* text-slate-500 */
+  }
+  
+  .icon {
+    height: 24px; /* h-6 */
+    color: #4f46e5; /* text-indigo-600 */
+    margin-right: 4px; /* mr-1 */
+  }
+  
+  @media (max-width: 400px) { /* Adjust this value as needed for your design */
+    
+    .hero-content {
+      grid-template-columns: 1fr; /* Stacks the grid items vertically */
+    }
+  
+    .image-container,
+    .text-content,
+    .services-section {
+      padding: 0 16px; /* Adds padding to maintain consistency */
+      text-align: center; /* Centers the content for smaller screens */
+    }
+  
+    .services-section {
+      position: static; /* Resets position to flow in the document */
+      width: auto; /* Resets width to default */
+      min-width: 0; /* Overrides the min-width set for larger screens */
+      order: 3; /* Positions the services-section below the image-container */
+      margin-top: 16px; /* Adds space above the services section */
+      padding-top: 16px; /* Adds padding at the top of the services section */
+      border-top: 1px solid #cbd5e1; /* Adds a border at the top for visual separation */
+      background-color: red;
+    }
+  
+    .image-container {
+      order: 2; /* Ensures the image container comes before the services-section */
+    }
+  
+    .text-content {
+      order: 1; /* Ensures text content comes first */
+    }
+  }
+  
