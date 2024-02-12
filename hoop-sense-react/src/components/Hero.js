@@ -1,6 +1,6 @@
 import React from 'react'
 import shooting_ball from '../assets/nba_img.png'
-import nba_court from '../assets/nba_court.jpeg'
+
 
 import { FaUser } from 'react-icons/fa';
 import { AiOutlineTeam } from 'react-icons/ai';

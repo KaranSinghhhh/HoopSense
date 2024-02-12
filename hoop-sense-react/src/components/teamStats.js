@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Dashboard() {
+function teamStats() {
   return (
     <div className='mt-[130px] flex justify-center items-center'>
-        <h1>This is the Dashboard</h1>
+        <h1>Team Stats</h1>
 
     </div>
   )
 }
 
-export default Dashboard
+export default teamStats
