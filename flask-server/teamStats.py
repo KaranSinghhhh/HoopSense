@@ -13,7 +13,7 @@ def get_database_connection():
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="",
+            password="password",
             database="HoopSense"
         )
         return connection
@@ -32,7 +32,7 @@ def search_team():
         try:
             cursor = connection.cursor(dictionary=True)
             query = """
-            SELECT TEAM_NAME FROM TEAMS_2023_24
+            SELECT TEAM_NAME, GP, W, L, FGM, FGA FROM TEAMS_2023_24
             WHERE TEAM_NAME LIKE %s
             """
             cursor.execute(query, (f"%{team_name_query}%",))

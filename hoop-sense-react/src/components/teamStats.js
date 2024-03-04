@@ -3,7 +3,8 @@ import { FaSearch } from 'react-icons/fa';
 
 function TeamStats() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [teamNames, setTeamNames] = useState([]); // State to store the fetched team names
+  // Update the state to store the full data, not just names
+  const [teamStats, setTeamStats] = useState([]); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,8 +19,8 @@ function TeamStats() {
       });
       if (response.ok) {
         const data = await response.json();
-        const names = data.map(item => item.TEAM_NAME); // Extract team names
-        setTeamNames(names); // Set the team names state
+        // Correctly set the state with the fetched data
+        setTeamStats(data); 
         console.log(data);
       } else {
         console.error('HTTP Error:', response.statusText);
@@ -61,11 +62,57 @@ function TeamStats() {
         </button>
       </div>
       
-      <div className='flex justify-center py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-[250px] mx-auto'>
-        {teamNames.map((name, index) => (
-          <p key={index}>{name}</p> // Display each team name in its own paragraph
+      <div className='py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-[250px] mx-auto'>
+        {teamStats.map((team, index) => (
+            <>
+              <div key={index}>
+                {/* Correctly display TEAM_NAME and GP */}
+                <h1>{team.TEAM_NAME}</h1>
+                  <p>Games Played: {team.GP}</p>
+                  <p>Wins {team.W} | Loss {team.L}</p>
+              </div>
+              
+
+              <div className='flex mt-[20px]'>
+                <p className="ml-24">FGM</p>  {/* Adjust the number in mr-4 to increase or decrease the margin */}
+                <p className="ml-4">FGA</p>
+                <p className="ml-4">FG%</p>
+                <p className="ml-4">FG3 M</p>
+                <p className="ml-4">FG3 A</p>
+                <p className="ml-4">FG3 %</p>
+                <p className="ml-4">FTA %</p>
+                <p className="ml-4">FTM %</p>
+                <p className="ml-4">FT %</p>
+                <p className="ml-4">REB</p>
+                <p className="ml-4">O REB</p>
+                <p className="ml-4">D REB</p>
+              </div>
+
+              <div>
+                <hr></hr>
+                <p className='mt-1.5'></p>
+                <p className='mt-1.5'></p>
+                <p className='mt-1.5'>Team <span className="ml-12">{team.FGM}</span> | <span>{team.FGA}</span></p>
+                <hr className='mt-1.5'></hr>
+                <p className='mt-1.5'>Team Rank</p>
+                <hr className='mt-1.5'></hr>
+              </div>
+            </>
         ))}
+
+
+
+              
+           
+
       </div>
+     
+
+
+              
+           
+
+      
     </>
   );
 }

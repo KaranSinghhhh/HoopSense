@@ -2,6 +2,7 @@ import mysql.connector
 import requests
 import json
 import sys
+import csv
 
 
 
@@ -24,8 +25,6 @@ headers = {
    'Accept-Language': 'en-US,en;q=0.9',
 }
 
-
-
 #Fetching Data from nba API
 try:
    response = requests.get(url=team_info_url, headers=headers)
@@ -40,6 +39,22 @@ except requests.RequestException as e:
 try:
    teams_data = data['resultSets'][0]['rowSet']
    teams_count = len(teams_data)
+   columns_list = data['resultSets'][0]['headers']
+
+   filename = 'nba_team_2023_24.csv'
+
+   # Write to CSV
+   with open(filename, 'w', newline='') as csvfile:
+      csvwriter = csv.writer(csvfile)
+      # Write the headers
+      csvwriter.writerow(columns_list)
+      # Write the data rows
+      for team_data in teams_data:
+         csvwriter.writerow(team_data)
+
+   print(f"Data successfully written to {filename}")
+
+
    print(teams_count)
   
    all_teams_data = []  # Initialize an empty list to store all teams' data
@@ -55,7 +70,7 @@ try:
    db = mysql.connector.connect(
    host="localhost",
    user="root",
-   password="",
+   password="password",
    database="HoopSense"
    )
    mycursor = db.cursor()
@@ -80,7 +95,6 @@ except mysql.connector.Error as err:
     sys.exit(1)
 
 
-  
 columns_list = [
                 "TEAM_ID",
                 "TEAM_NAME",
@@ -311,6 +325,8 @@ ON DUPLICATE KEY UPDATE
     PLUS_MINUS_RANK=VALUES(PLUS_MINUS_RANK);
 """
 
+
+
 try:
    mycursor.execute(create_table_query)
    print("Table created successfully or already exists.")
@@ -329,5 +345,6 @@ except mysql.connector.Error as err:
 finally:
    mycursor.close()
    db.close()  # Close the database connection
+
 
 
