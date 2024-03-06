@@ -107,9 +107,12 @@ function TeamStats() {
                 <li>BLK</li>
                 <li>BLKA</li>
                 <li>PF</li>
+                <li>PFD</li>
+                <li>PTS</li>
+                <li>+/-</li>
                 
               </ul>
-              <hr  ></hr> 
+              <hr></hr> 
               <ul className='flex justify-start items-center'>
                 <li>Team</li> 
                 <li className='ml-[12px]'>{team.FGM}</li>
@@ -130,11 +133,20 @@ function TeamStats() {
                 <li className='ml-[20px]'>{team.BLK}</li>
                 <li className='ml-[27px]'>{team.BLKA}</li>
                 <li className='ml-[18px]'>{team.PF}</li>
+                <li className='ml-[12px]'>{team.PFD}</li>
+                <li className='ml-[15px]'>{team.PTS}</li>
+                <li className='ml-[10px]'>{team.PLUS_MINUS}</li>
                 
               </ul>
               <hr ></hr>
-              <ul className='flex gap-4 justify-start items-center'>
+              <ul className='flex justify-start items-center'>
                 <li>Rank</li>
+                <li className='ml-[28px]'>{team.FGM_RANK}</li>
+                <li className='ml-[28px]'>{team.FGA_RANK}</li>
+                <li className='ml-[28px]'>{team.FG_PCT_RANK}</li>
+                <li className='ml-[28px]'>{team.FG3M_RANK}</li>
+                <li className='ml-[28px]'>{team.FG3A_RANK}</li>
+                
               </ul>
               </div>
             </div>
