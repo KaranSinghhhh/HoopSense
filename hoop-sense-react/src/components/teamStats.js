@@ -75,8 +75,8 @@ function TeamStats() {
 
               <div className='flex mt-[20px]'>
                 <p className="ml-[96px]">FGM </p>  {/* Adjust the number in mr-4 to increase or decrease the margin */}
-                <p className="ml-[13px]">FGA  </p>
-                <p className="ml-2">FG%  </p>
+                <p className="ml-4">FGA  </p>
+                <p className="ml-4">FG%  </p>
                 <p className="ml-4">FG3 </p>
                 <p className="ml-4">FG3A</p>
                 <p className="ml-4">FG3%</p>
@@ -86,7 +86,6 @@ function TeamStats() {
                 <p className="ml-4">REB</p>
                 <p className="ml-4">OREB</p>
                 <p className="ml-4">DREB</p>
-                <p className="ml-4">REB</p>
                 <p className="ml-4">AST</p>
                 <p className="ml-4">TOV</p>
                 <p className="ml-4">STL</p>
@@ -95,6 +94,9 @@ function TeamStats() {
                 <p className="ml-4">PF</p>
 
                 
+       
+
+
 
               </div>
 
@@ -102,7 +104,7 @@ function TeamStats() {
                 <hr></hr>
                 <p className='mt-1.5'></p>
                 <p className='mt-1.5'></p>
-                <p className='mt-1.5'>Team <span className="ml-12">{team.FGM}</span> | <span >{team.FGA}</span> | <span >{team.FG_PCT}</span> | <span >{team.FG3M}</span> | <span >{team.FG3A}</span> | <span >{team.FG3_PCT}</span> | <span >{team.FTM}</span> | <span >{team.FTA}</span> | <span >{team.FT_PCT}</span> |</p>
+                <p className='mt-1.5'>Team <span className="ml-12">{team.FGM}</span>  <span className="ml-3" >{team.FGA}</span>  <span className="ml-3" >{team.FG_PCT}</span>  <span className="ml-3" >{team.FG3M}</span>  <span className="ml-3" >{team.FG3A}</span>  <span className="ml-3" >{team.FG3_PCT}</span>  <span className="ml-3" >{team.FTM}</span>  <span className="ml-3">{team.FTA}</span>  <span className="ml-3" >{team.FT_PCT}</span> <span className="ml-3">{team.REB}</span> <span className="ml-3">{team.OREB}</span> <span className="ml-3">{team.DREB}</span> <span className="ml-3">{team.AST}</span>  <span className="ml-3">{team.TOV}</span>  <span className="ml-3">{team.STL}</span> <span className="ml-3">{team.BLK}</span> <span className="ml-3">{team.BLKA}</span> <span className="ml-3">{team.PF}</span> </p>
                 <hr className='mt-1.5'></hr>
                 <p className='mt-1.5'>Team Rank</p>
                 <hr className='mt-1.5'></hr>
