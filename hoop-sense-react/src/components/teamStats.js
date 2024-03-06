@@ -64,13 +64,13 @@ function TeamStats() {
       </div>
 
       <div className='flex justify-center py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-3/4 mx-auto'>
-        <button  type="submit"  className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+        <button  type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
           <p>Traditonal</p>
         </button>
-        <button type="submit"  className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+        <button type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
           Defense
         </button>
-        <button  type="submit"  className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+        <button  type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
           Advanced
         </button>
       </div>
@@ -142,10 +142,28 @@ function TeamStats() {
               <ul className='flex justify-start items-center'>
                 <li>Rank</li>
                 <li className='ml-[28px]'>{team.FGM_RANK}</li>
-                <li className='ml-[28px]'>{team.FGA_RANK}</li>
-                <li className='ml-[28px]'>{team.FG_PCT_RANK}</li>
-                <li className='ml-[28px]'>{team.FG3M_RANK}</li>
-                <li className='ml-[28px]'>{team.FG3A_RANK}</li>
+                <li className='ml-[41px]'>{team.FGA_RANK}</li>
+                <li className='ml-[41px]'>{team.FG_PCT_RANK}</li>
+                <li className='ml-[41px]'>{team.FG3M_RANK}</li>
+                <li className='ml-[49px]'>{team.FG3A_RANK}</li>
+                <li className='ml-[49px]'>{team.FG3_PCT_RANK}</li>
+                <li className='ml-[46px]'>{team.FTM_RANK}</li>
+                <li className='ml-[40px]'>{team.FTA_RANK}</li>
+                <li className='ml-[40px]'>{team.FT_PCT_RANK}</li>
+                <li className='ml-[43px]'>{team.REB_RANK}</li>
+                <li className='ml-[47px]'>{team.OREB_RANK}</li>
+                <li className='ml-[48px]'>{team.DREB_RANK}</li>
+                <li className='ml-[37px]'>{team.AST_RANK}</li>
+                <li className='ml-[37px]'>{team.TOV_RANK}</li>
+                <li className='ml-[31px]'>{team.STL_RANK}</li>
+                <li className='ml-[33px]'>{team.BLK_RANK}</li>
+                <li className='ml-[35px]'>{team.BLKA_RANK}</li>
+                <li className='ml-[30px]'>{team.PF_RANK}</li>
+                <li className='ml-[32px]'>{team.PFD_RANK}</li>
+                <li className='ml-[39px]'>{team.PTS_RANK}</li>
+                <li className='ml-[35px]'>{team.PLUS_MINUS_RANK}</li>
+                
+
                 
               </ul>
               </div>
