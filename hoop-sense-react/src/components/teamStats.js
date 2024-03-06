@@ -75,7 +75,7 @@ function TeamStats() {
         </button>
       </div>
 
-      <div className='py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-[250px] mx-auto overflow-x-auto'>
+      <div className='py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-[270px] mx-auto overflow-x-auto'>
         {teamStats.map((team, index) => (
           <div key={index} className='mb-4' 
               
@@ -115,19 +115,19 @@ function TeamStats() {
                 <li className='ml-[13px]'>{team.FG_PCT}</li>
                 <li className='ml-[25px]'>{team.FG3M}</li>
                 <li className='ml-[34px]'>{team.FG3A}</li>
-                <li>{team.FG3_PCT}</li>
-                <li>{team.FTM}</li>
-                <li>{team.FTA}</li>
-                <li>{team.FT_PCT}</li>
-                <li>{team.REB}</li>
-                <li>{team.OREB}</li>
-                <li>{team.DREB}</li>
-                <li>{team.AST}</li>
-                <li>{team.TOV}</li>
-                <li>{team.STL}</li>
-                <li>{team.BLK}</li>
-                <li>{team.BLKA}</li>
-                <li>{team.PF}</li>
+                <li className='ml-[21px]'>{team.FG3_PCT}</li>
+                <li className='ml-[22px]'>{team.FTM}</li>
+                <li className='ml-[13px]'>{team.FTA}</li>
+                <li className='ml-[17px]'>{team.FT_PCT}</li>
+                <li className='ml-[19px]'>{team.REB}</li>
+                <li className='ml-[21px]'>{team.OREB}</li>
+                <li className='ml-[30px]'>{team.DREB}</li>
+                <li className='ml-[18px]'>{team.AST}</li>
+                <li className='ml-[21px]'>{team.TOV}</li>
+                <li className='ml-[21px]'>{team.STL}</li>
+                <li className='ml-[20px]'>{team.BLK}</li>
+                <li className='ml-[27px]'>{team.BLKA}</li>
+                <li className='ml-[18px]'>{team.PF}</li>
               </ul>
               <hr className="min-w-full"></hr>
               <ul className='flex gap-4 justify-start items-center'>
