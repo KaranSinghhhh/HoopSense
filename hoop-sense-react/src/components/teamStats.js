@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 function TeamStats() {
   const [searchTerm, setSearchTerm] = useState('');
-  // Update the state to store the full data, not just names
-  const [teamStats, setTeamStats] = useState([]); 
+  const [teamStats, setTeamStats] = useState([]);
+  // const [selectedTeam, setSelectedTeam] = useState('');
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const url = `http://localhost:5001/TeamStats?name=${encodeURIComponent(searchTerm)}`; // Construct the URL with query parameter
+    const url = `http://localhost:5001/TeamStats?name=${encodeURIComponent(searchTerm)}`;
     try {
       const response = await fetch(url, {
         method: 'GET',
@@ -19,8 +20,7 @@ function TeamStats() {
       });
       if (response.ok) {
         const data = await response.json();
-        // Correctly set the state with the fetched data
-        setTeamStats(data); 
+        setTeamStats(data);
         console.log(data);
       } else {
         console.error('HTTP Error:', response.statusText);
@@ -30,9 +30,22 @@ function TeamStats() {
     }
   };
 
+  //useEffect(() => {
+  //  if (teamStats.length > 0) {
+  //    setSelectedTeam(teamStats[0].TEAM_NAME);
+  //  }
+  // }, [teamStats]);
+
+
   return (
     <>
-      <div className='mt-[150px] flex justify-center py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-3/4 mx-auto'>
+      <div 
+        className='mt-[150px] flex justify-center py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-3/4 mx-auto'
+        //style={{
+        // border: `4px solid ${teamColors[selectedTeam] || 'gray'}`, // Dynamic border color based on selected team
+        //}}
+      >
+        
         <form onSubmit={handleSubmit} className="flex">
           <input 
             type="text" 
@@ -61,87 +74,69 @@ function TeamStats() {
           Advanced
         </button>
       </div>
-      
-      <div className='py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-[250px] mx-auto'>
+
+      <div className='py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-[250px] mx-auto overflow-x-auto'>
         {teamStats.map((team, index) => (
-            <>
-              <div key={index}>
-                {/* Correctly display TEAM_NAME and GP */}
-                <h1>{team.TEAM_NAME}</h1>
-                  <p>Games Played: {team.GP}</p>
-                  <p>Wins {team.W} | Loss {team.L}</p>
-              </div>
+          <div key={index} className='mb-4' 
               
-
-              <div className='flex mt-[20px]'>
-                
-                <ul className='flex gap-4 overflow-y-auto '>
-                    <p className="px-4 py-2 ml-20" >FGM </p>  
-                    <p className="px-4 py-2 ml-4">FGA  </p>
-                    <p className="px-4 py-2 ml-4">FG%  </p>
-                    <p className="px-4 py-2 ml-4">FG3 </p>
-                    <p className="px-4 py-2 ml-4">FG3A</p>
-                    <p className="px-4 py-2 ml-4">FG3%</p>
-                    <p className="px-4 py-2 ml-4">FTA%</p>
-                    <p className="px-4 py-2 ml-4">FTM%</p>
-                    <p className="px-4 py-2 ml-4">FT%</p>
-                    <p className="px-4 py-2 ml-4">REB</p>
-                    <p className="px-4 py-2 ml-4">OREB</p>
-                    <p className="px-4 py-2 ml-4">DREB</p>
-                    <p className="px-4 py-2 ml-4">AST</p>
-                    <p className="px-4 py-2 ml-4">TOV</p>
-                    <p className="px-4 py-2 ml-4">STL</p>
-                    <p className="px-4 py-2 ml-4">BLK</p>
-                    <p className="px-4 py-2 ml-4">BLKA</p>
-                    <p className="px-4 py-2 ml-4">PF</p>
-                    </ul>
-
-                  </div>
-                    <hr></hr>
-                    <ul>
-                      <p className='flex gap-4 overflow-y-auto '>Team 
-                        <span className="px-4 py-2 ml-4">{team.FGM}</span>  
-                        <span className="px-4 py-2 ml-4" >{team.FGA}</span>  
-                        <span className="px-4 py-2 ml-4" >{team.FG_PCT}</span>  
-                        <span className="px-4 py-2 ml-4" >{team.FG3M}</span>  
-                        <span className="px-4 py-2 ml-4" >{team.FG3A}</span>  
-                        <span className="px-4 py-2 ml-4" >{team.FG3_PCT}</span>  
-                        <span className="px-4 py-2 ml-4" >{team.FTM}</span>  
-                        <span className="px-4 py-2 ml-4">{team.FTA}</span>  
-                        <span className="px-4 py-2 ml-4" >{team.FT_PCT}</span> 
-                        <span className="px-4 py-2 ml-4">{team.REB}</span> 
-                        <span className="px-4 py-2 ml-4">{team.OREB}</span> 
-                        <span className="px-4 py-2 ml-4">{team.DREB}</span> 
-                        <span className="px-4 py-2 ml-4">{team.AST}</span>  
-                        <span className="px-4 py-2 ml-4">{team.TOV}</span>  
-                        <span className="px-4 py-2 ml-4">{team.STL}</span> 
-                        <span className="px-4 py-2 ml-4">{team.BLK}</span> 
-                        <span className="px-4 py-2 ml-4">{team.BLKA}</span> 
-                        <span className="px-4 py-2 ml-4">{team.PF}</span> 
-                      </p>
-                    </ul>
-                    <hr className='mt-1.5'></hr>
-                    <p className='mt-1.5'>Team Rank</p>
-                    <hr className='mt-1.5'></hr>
-                  <div>
-               
-              </div>
-            </>
+          >
+          
+            <h1>{team.TEAM_NAME}</h1>
+            <p>Games Played: {team.GP}</p>
+            <p>Wins: {team.W} | Loss: {team.L}</p>
+            
+            <div className='mt-[20px]'>
+              <ul className='flex gap-[20px] justify-start items-center'>
+                <li>Type</li> 
+                <li>FGM</li>
+                <li>FGA</li>
+                <li>FG%</li>
+                <li>FG3M</li>
+                <li>FG3A</li>
+                <li>FG3%</li>
+                <li>FTM</li>
+                <li>FTA</li>
+                <li>FT%</li>
+                <li>REB</li>
+                <li>OREB</li>
+                <li>DREB</li>
+                <li>AST</li>
+                <li>TOV</li>
+                <li>STL</li>
+                <li>BLK</li>
+                <li>BLKA</li>
+                <li>PF</li>
+              </ul>
+              <hr className="min-w-full"></hr> 
+              <ul className='flex justify-start items-center'>
+                <li>Team</li> 
+                <li className='ml-[12px]'>{team.FGM}</li>
+                <li className='ml-[12px]'>{team.FGA}</li>
+                <li className='ml-[13px]'>{team.FG_PCT}</li>
+                <li className='ml-[25px]'>{team.FG3M}</li>
+                <li className='ml-[34px]'>{team.FG3A}</li>
+                <li>{team.FG3_PCT}</li>
+                <li>{team.FTM}</li>
+                <li>{team.FTA}</li>
+                <li>{team.FT_PCT}</li>
+                <li>{team.REB}</li>
+                <li>{team.OREB}</li>
+                <li>{team.DREB}</li>
+                <li>{team.AST}</li>
+                <li>{team.TOV}</li>
+                <li>{team.STL}</li>
+                <li>{team.BLK}</li>
+                <li>{team.BLKA}</li>
+                <li>{team.PF}</li>
+              </ul>
+              <hr className="min-w-full"></hr>
+              <ul className='flex gap-4 justify-start items-center'>
+                <li>Rank</li>
+              </ul>
+            </div>
+          </div>
         ))}
-
-
-
-              
-           
-
       </div>
-     
-
-
-              
-           
-
-      
     </>
   );
 }
