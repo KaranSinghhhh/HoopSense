@@ -74,40 +74,57 @@ function TeamStats() {
               
 
               <div className='flex mt-[20px]'>
-                <p className="ml-[96px]">FGM </p>  {/* Adjust the number in mr-4 to increase or decrease the margin */}
-                <p className="ml-4">FGA  </p>
-                <p className="ml-4">FG%  </p>
-                <p className="ml-4">FG3 </p>
-                <p className="ml-4">FG3A</p>
-                <p className="ml-4">FG3%</p>
-                <p className="ml-4">FTA%</p>
-                <p className="ml-4">FTM%</p>
-                <p className="ml-4">FT%</p>
-                <p className="ml-4">REB</p>
-                <p className="ml-4">OREB</p>
-                <p className="ml-4">DREB</p>
-                <p className="ml-4">AST</p>
-                <p className="ml-4">TOV</p>
-                <p className="ml-4">STL</p>
-                <p className="ml-4">BLK</p>
-                <p className="ml-4">BLKA</p>
-                <p className="ml-4">PF</p>
-
                 
-       
+                <ul className='flex gap-4 overflow-y-auto '>
+                    <p className="px-4 py-2 ml-20" >FGM </p>  
+                    <p className="px-4 py-2 ml-4">FGA  </p>
+                    <p className="px-4 py-2 ml-4">FG%  </p>
+                    <p className="px-4 py-2 ml-4">FG3 </p>
+                    <p className="px-4 py-2 ml-4">FG3A</p>
+                    <p className="px-4 py-2 ml-4">FG3%</p>
+                    <p className="px-4 py-2 ml-4">FTA%</p>
+                    <p className="px-4 py-2 ml-4">FTM%</p>
+                    <p className="px-4 py-2 ml-4">FT%</p>
+                    <p className="px-4 py-2 ml-4">REB</p>
+                    <p className="px-4 py-2 ml-4">OREB</p>
+                    <p className="px-4 py-2 ml-4">DREB</p>
+                    <p className="px-4 py-2 ml-4">AST</p>
+                    <p className="px-4 py-2 ml-4">TOV</p>
+                    <p className="px-4 py-2 ml-4">STL</p>
+                    <p className="px-4 py-2 ml-4">BLK</p>
+                    <p className="px-4 py-2 ml-4">BLKA</p>
+                    <p className="px-4 py-2 ml-4">PF</p>
+                    </ul>
 
-
-
-              </div>
-
-              <div>
-                <hr></hr>
-                <p className='mt-1.5'></p>
-                <p className='mt-1.5'></p>
-                <p className='mt-1.5'>Team <span className="ml-12">{team.FGM}</span>  <span className="ml-3" >{team.FGA}</span>  <span className="ml-3" >{team.FG_PCT}</span>  <span className="ml-3" >{team.FG3M}</span>  <span className="ml-3" >{team.FG3A}</span>  <span className="ml-3" >{team.FG3_PCT}</span>  <span className="ml-3" >{team.FTM}</span>  <span className="ml-3">{team.FTA}</span>  <span className="ml-3" >{team.FT_PCT}</span> <span className="ml-3">{team.REB}</span> <span className="ml-3">{team.OREB}</span> <span className="ml-3">{team.DREB}</span> <span className="ml-3">{team.AST}</span>  <span className="ml-3">{team.TOV}</span>  <span className="ml-3">{team.STL}</span> <span className="ml-3">{team.BLK}</span> <span className="ml-3">{team.BLKA}</span> <span className="ml-3">{team.PF}</span> </p>
-                <hr className='mt-1.5'></hr>
-                <p className='mt-1.5'>Team Rank</p>
-                <hr className='mt-1.5'></hr>
+                  </div>
+                    <hr></hr>
+                    <ul>
+                      <p className='flex gap-4 overflow-y-auto '>Team 
+                        <span className="px-4 py-2 ml-4">{team.FGM}</span>  
+                        <span className="px-4 py-2 ml-4" >{team.FGA}</span>  
+                        <span className="px-4 py-2 ml-4" >{team.FG_PCT}</span>  
+                        <span className="px-4 py-2 ml-4" >{team.FG3M}</span>  
+                        <span className="px-4 py-2 ml-4" >{team.FG3A}</span>  
+                        <span className="px-4 py-2 ml-4" >{team.FG3_PCT}</span>  
+                        <span className="px-4 py-2 ml-4" >{team.FTM}</span>  
+                        <span className="px-4 py-2 ml-4">{team.FTA}</span>  
+                        <span className="px-4 py-2 ml-4" >{team.FT_PCT}</span> 
+                        <span className="px-4 py-2 ml-4">{team.REB}</span> 
+                        <span className="px-4 py-2 ml-4">{team.OREB}</span> 
+                        <span className="px-4 py-2 ml-4">{team.DREB}</span> 
+                        <span className="px-4 py-2 ml-4">{team.AST}</span>  
+                        <span className="px-4 py-2 ml-4">{team.TOV}</span>  
+                        <span className="px-4 py-2 ml-4">{team.STL}</span> 
+                        <span className="px-4 py-2 ml-4">{team.BLK}</span> 
+                        <span className="px-4 py-2 ml-4">{team.BLKA}</span> 
+                        <span className="px-4 py-2 ml-4">{team.PF}</span> 
+                      </p>
+                    </ul>
+                    <hr className='mt-1.5'></hr>
+                    <p className='mt-1.5'>Team Rank</p>
+                    <hr className='mt-1.5'></hr>
+                  <div>
+               
               </div>
             </>
         ))}
