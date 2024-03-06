@@ -85,7 +85,8 @@ function TeamStats() {
             <p>Games Played: {team.GP}</p>
             <p>Wins: {team.W} | Loss: {team.L}</p>
             
-            <div className='mt-[20px]'>
+            <div className='mt-[20px] overflow-x-auto'>
+              <div style={{ minWidth: 'max-content' }}>
               <ul className='flex gap-[20px] justify-start items-center'>
                 <li>Type</li> 
                 <li>FGM</li>
@@ -106,8 +107,9 @@ function TeamStats() {
                 <li>BLK</li>
                 <li>BLKA</li>
                 <li>PF</li>
+                
               </ul>
-              <hr className="min-w-full"></hr> 
+              <hr  ></hr> 
               <ul className='flex justify-start items-center'>
                 <li>Team</li> 
                 <li className='ml-[12px]'>{team.FGM}</li>
@@ -128,11 +130,13 @@ function TeamStats() {
                 <li className='ml-[20px]'>{team.BLK}</li>
                 <li className='ml-[27px]'>{team.BLKA}</li>
                 <li className='ml-[18px]'>{team.PF}</li>
+                
               </ul>
-              <hr className="min-w-full"></hr>
+              <hr ></hr>
               <ul className='flex gap-4 justify-start items-center'>
                 <li>Rank</li>
               </ul>
+              </div>
             </div>
           </div>
         ))}
