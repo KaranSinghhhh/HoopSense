@@ -88,80 +88,80 @@ function TeamStats() {
             <div className='mt-[20px] overflow-x-auto'>
               <div style={{ minWidth: 'max-content' }}>
               <ul className='flex gap-[20px] justify-start items-center'>
-                <li>Type</li> 
-                <li>FGM</li>
-                <li>FGA</li>
-                <li>FG%</li>
-                <li>FG3M</li>
-                <li>FG3A</li>
-                <li>FG3%</li>
-                <li>FTM</li>
-                <li>FTA</li>
-                <li>FT%</li>
-                <li>REB</li>
-                <li>OREB</li>
-                <li>DREB</li>
-                <li>AST</li>
-                <li>TOV</li>
-                <li>STL</li>
-                <li>BLK</li>
-                <li>BLKA</li>
-                <li>PF</li>
-                <li>PFD</li>
-                <li>PTS</li>
-                <li>+/-</li>
-                
+              <li>Type</li> 
+                <li className="w-[80px] text-center" >FGM</li>
+                <li className="w-[80px] text-center">FGA</li>
+                <li className="w-[80px] text-center">FG%</li>
+                <li className="w-[80px] text-center">FG3M</li>
+                <li className="w-[80px] text-center">FG3A</li>
+                <li className="w-[80px] text-center">FG3%</li>
+                <li className="w-[80px] text-center" >FTM</li>
+                <li className="w-[80px] text-center">FTA</li>
+                <li className="w-[80px] text-center">FT%</li>
+                <li className="w-[80px] text-center">REB</li>
+                <li className="w-[80px] text-center">OREB</li>
+                <li className="w-[80px] text-center">DREB</li>
+                <li className="w-[80px] text-center">AST</li>
+                <li className="w-[80px] text-center">TOV</li>
+                <li className="w-[80px] text-center">STL</li>
+                <li className="w-[80px] text-center">BLK</li>
+                <li className="w-[80px] text-center">BLKA</li>
+                <li className="w-[80px] text-center">PF</li>
+                <li className="w-[80px] text-center">PFD</li>
+                <li className="w-[80px] text-center">PTS</li>
+                <li className="w-[80px] text-center">+/-</li>                                                                
+                                                                                
               </ul>
               <hr></hr> 
-              <ul className='flex justify-start items-center'>
-                <li>Team</li> 
-                <li className='ml-[12px]'>{team.FGM}</li>
-                <li className='ml-[12px]'>{team.FGA}</li>
-                <li className='ml-[13px]'>{team.FG_PCT}</li>
-                <li className='ml-[25px]'>{team.FG3M}</li>
-                <li className='ml-[34px]'>{team.FG3A}</li>
-                <li className='ml-[21px]'>{team.FG3_PCT}</li>
-                <li className='ml-[22px]'>{team.FTM}</li>
-                <li className='ml-[13px]'>{team.FTA}</li>
-                <li className='ml-[17px]'>{team.FT_PCT}</li>
-                <li className='ml-[19px]'>{team.REB}</li>
-                <li className='ml-[21px]'>{team.OREB}</li>
-                <li className='ml-[30px]'>{team.DREB}</li>
-                <li className='ml-[18px]'>{team.AST}</li>
-                <li className='ml-[21px]'>{team.TOV}</li>
-                <li className='ml-[21px]'>{team.STL}</li>
-                <li className='ml-[20px]'>{team.BLK}</li>
-                <li className='ml-[27px]'>{team.BLKA}</li>
-                <li className='ml-[18px]'>{team.PF}</li>
-                <li className='ml-[12px]'>{team.PFD}</li>
-                <li className='ml-[15px]'>{team.PTS}</li>
-                <li className='ml-[10px]'>{team.PLUS_MINUS}</li>
+              <ul className='flex gap-[20px] justify-start items-center'>
+                <li >Team</li> 
+                <li className="w-[73px] text-center">{team.FGM}</li>
+                <li className="w-[82px] text-center">{team.FGA}</li>
+                <li className="w-[76px] text-center">{team.FG_PCT}</li>
+                <li className="w-[83px] text-center">{team.FG3M}</li>
+                <li className="w-[83px] text-center">{team.FG3A}</li>
+                <li className="w-[75px] text-center">{team.FG3_PCT}</li>
+                <li className="w-[87px] text-center">{team.FTM}</li>
+                <li className="w-[75px] text-center" >{team.FTA}</li>
+                <li className="w-[75px] text-center">{team.FT_PCT}</li>
+                <li className="w-[92px] text-center">{team.REB}</li>
+                <li className="w-[75px] text-center">{team.OREB}</li>
+                <li className="w-[75px] text-center">{team.DREB}</li>
+                <li className="w-[87px] text-center">{team.AST}</li>
+                <li className="w-[75px] text-center">{team.TOV}</li>
+                <li className="w-[85px] text-center">{team.STL}</li>
+                <li className="w-[75px] text-center">{team.BLK}</li>
+                <li className="w-[87px] text-center">{team.BLKA}</li>
+                <li className="w-[75px] text-center">{team.PF}</li>
+                <li className="w-[80px] text-center">{team.PFD}</li>
+                <li className="w-[81px] text-center">{team.PTS}</li>
+                <li className="w-[75px] text-center">{team.PLUS_MINUS}</li>
                 
               </ul>
               <hr ></hr>
-              <ul className='flex justify-start items-center'>
+              <ul className='flex gap-[20px] justify-start items-center'>
                 <li>Rank</li>
-                <li className='ml-[28px]'>{team.FGM_RANK}</li>
-                <li className='ml-[41px]'>{team.FGA_RANK}</li>
-                <li className='ml-[41px]'>{team.FG_PCT_RANK}</li>
-                <li className='ml-[41px]'>{team.FG3M_RANK}</li>
-                <li className='ml-[49px]'>{team.FG3A_RANK}</li>
-                <li className='ml-[49px]'>{team.FG3_PCT_RANK}</li>
-                <li className='ml-[46px]'>{team.FTM_RANK}</li>
-                <li className='ml-[40px]'>{team.FTA_RANK}</li>
-                <li className='ml-[40px]'>{team.FT_PCT_RANK}</li>
-                <li className='ml-[43px]'>{team.REB_RANK}</li>
-                <li className='ml-[47px]'>{team.OREB_RANK}</li>
-                <li className='ml-[48px]'>{team.DREB_RANK}</li>
-                <li className='ml-[37px]'>{team.AST_RANK}</li>
-                <li className='ml-[37px]'>{team.TOV_RANK}</li>
-                <li className='ml-[31px]'>{team.STL_RANK}</li>
-                <li className='ml-[33px]'>{team.BLK_RANK}</li>
-                <li className='ml-[35px]'>{team.BLKA_RANK}</li>
-                <li className='ml-[30px]'>{team.PF_RANK}</li>
-                <li className='ml-[32px]'>{team.PFD_RANK}</li>
-                <li className='ml-[39px]'>{team.PTS_RANK}</li>
-                <li className='ml-[35px]'>{team.PLUS_MINUS_RANK}</li>
+                <li className="w-[75px] text-center">{team.FGM_RANK}</li>
+                <li className="w-[75px] text-center">{team.FGA_RANK}</li>
+                <li className="w-[89px] text-center">{team.FG_PCT_RANK}</li>
+                <li className="w-[72px] text-center">{team.FG3M_RANK}</li>
+                <li className="w-[88px] text-center">{team.FG3A_RANK}</li>
+                <li className="w-[75px] text-center">{team.FG3_PCT_RANK}</li>
+                <li className="w-[85px] text-center">{team.FTM_RANK}</li>
+                <li className="w-[79px] text-center">{team.FTA_RANK}</li>
+                <li className="w-[75px] text-center">{team.FT_PCT_RANK}</li>
+                <li className="w-[85px] text-center">{team.REB_RANK}</li>
+                <li className="w-[79px] text-center">{team.OREB_RANK}</li>
+                <li className="w-[75px] text-center">{team.DREB_RANK}</li>
+                <li className="w-[85px] text-center">{team.AST_RANK}</li>
+                <li className="w-[75px] text-center">{team.TOV_RANK}</li>
+                <li className="w-[87px] text-center">{team.STL_RANK}</li>
+                <li className="w-[75px] text-center">{team.BLK_RANK}</li>
+                <li className="w-[87px] text-center">{team.BLKA_RANK}</li>
+                <li className="w-[75px] text-center">{team.PF_RANK}</li>
+                <li className="w-[79px] text-center">{team.PFD_RANK}</li>
+                <li className="w-[85px] text-center">{team.PTS_RANK}</li>
+                <li className="w-[75px] text-center">{team.PLUS_MINUS_RANK}</li>
                 
 
                 
