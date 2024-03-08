@@ -8,19 +8,70 @@ function TeamStats() {
   const [statType, setStatType] = useState('')
 
   const teamColors = {
-    "Milwaukee Bucks": "border-green-500",
-    "Los Angeles Lakers": "border-purple-500",
-    "Chicago Bulls": "border-red-600",
-    "Golden State Warriors": "border-blue-400",
-    "Brooklyn Nets": "border-gray-700",
-    "Miami Heat": "border-red-500",
+    "Atlanta Hawks": "border-red-500",
     "Boston Celtics": "border-green-600",
-    "Los Angeles Clippers": "border-red-700",
-    "Phoenix Suns": "border-orange-500",
+    "Brooklyn Nets": "border-gray-700",
+    "Charlotte Hornets": "border-purple-600",
+    "Chicago Bulls": "border-red-600",
+    "Cleveland Cavaliers": "border-red-700",
     "Dallas Mavericks": "border-blue-700",
-   
+    "Denver Nuggets": "border-yellow-400",
+    "Detroit Pistons": "border-blue-600",
+    "Golden State Warriors": "border-blue-400",
+    "Houston Rockets": "border-red-500",
+    "Indiana Pacers": "border-yellow-500",
+    "Los Angeles Clippers": "border-red-700",
+    "Los Angeles Lakers": "border-purple-500",
+    "Memphis Grizzlies": "border-blue-800",
+    "Miami Heat": "border-red-600",
+    "Milwaukee Bucks": "border-green-500",
+    "Minnesota Timberwolves": "border-blue-500",
+    "New Orleans Pelicans": "border-red-600",
+    "New York Knicks": "border-blue-600",
+    "Oklahoma City Thunder": "border-blue-500",
+    "Orlando Magic": "border-blue-700",
+    "Philadelphia 76ers": "border-blue-500",
+    "Phoenix Suns": "border-orange-500",
+    "Portland Trail Blazers": "border-black",
+    "Sacramento Kings": "border-purple-700",
+    "San Antonio Spurs": "border-gray-600",
+    "Toronto Raptors": "border-purple-700",
+    "Utah Jazz": "border-yellow-600",
+    "Washington Wizards": "border-blue-600",
   };
-
+  
+  const statColors = {
+    "Atlanta Hawks": "bg-red-500",
+    "Boston Celtics": "bg-green-600",
+    "Brooklyn Nets": "bg-gray-700",
+    "Charlotte Hornets": "bg-purple-600",
+    "Chicago Bulls": "bg-red-600",
+    "Cleveland Cavaliers": "bg-red-700",
+    "Dallas Mavericks": "bg-blue-700",
+    "Denver Nuggets": "bg-yellow-400",
+    "Detroit Pistons": "bg-blue-600",
+    "Golden State Warriors": "bg-blue-400",
+    "Houston Rockets": "bg-red-500",
+    "Indiana Pacers": "bg-yellow-500",
+    "Los Angeles Clippers": "bg-red-700",
+    "Los Angeles Lakers": "bg-purple-500",
+    "Memphis Grizzlies": "bg-blue-800",
+    "Miami Heat": "bg-red-600",
+    "Milwaukee Bucks": "bg-green-500",
+    "Minnesota Timberwolves": "bg-blue-500",
+    "New Orleans Pelicans": "bg-red-600",
+    "New York Knicks": "bg-blue-600",
+    "Oklahoma City Thunder": "bg-blue-500",
+    "Orlando Magic": "bg-blue-700",
+    "Philadelphia 76ers": "bg-blue-500",
+    "Phoenix Suns": "bg-orange-500",
+    "Portland Trail Blazers": "bg-black",
+    "Sacramento Kings": "bg-purple-700",
+    "San Antonio Spurs": "bg-gray-600",
+    "Toronto Raptors": "bg-purple-700",
+    "Utah Jazz": "bg-yellow-600",
+    "Washington Wizards": "bg-blue-600",
+  };
   
 
 
@@ -44,6 +95,9 @@ function TeamStats() {
         if (data.length > 0) {
           const teamColorClass = teamColors[data[0].TEAM_NAME] || 'border-gray-200'; // Default to gray if team is not found
           setBorderColorClass(teamColorClass);
+          
+          const statColorClass = statColors[data[0].TEAM_NAME] || 'border-gray-200';
+          setStatType(statColorClass);
         }
       } else {
         console.error('HTTP Error:', response.statusText);
@@ -101,7 +155,7 @@ function TeamStats() {
             
             <div className='mt-[20px] overflow-x-auto'>
               <div style={{ minWidth: 'max-content' }}>
-              <ul className='flex gap-[20px] justify-start items-center'>
+              <ul className={`flex gap-[20px] justify-start items-center rounded-[3px] ${statType}`}>
               <li>Type</li> 
                 <li className="w-[80px] text-center" >FGM</li>
                 <li className="w-[80px] text-center">FGA</li>
