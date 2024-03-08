@@ -4,7 +4,23 @@ import { FaSearch } from 'react-icons/fa';
 function TeamStats() {
   const [searchTerm, setSearchTerm] = useState('');
   const [teamStats, setTeamStats] = useState([]);
-  // const [selectedTeam, setSelectedTeam] = useState('');
+  const [borderColorClass, setBorderColorClass] = useState('border-gray-200'); // Default border color
+
+  const teamColors = {
+    "Milwaukee Bucks": "border-green-500",
+    "Los Angeles Lakers": "border-purple-500",
+    "Chicago Bulls": "border-red-600",
+    "Golden State Warriors": "border-blue-400",
+    "Brooklyn Nets": "border-gray-700",
+    "Miami Heat": "border-red-500",
+    "Boston Celtics": "border-green-600",
+    "Los Angeles Clippers": "border-red-700",
+    "Phoenix Suns": "border-orange-500",
+    "Dallas Mavericks": "border-blue-700",
+    // Add more teams and their corresponding Tailwind border color classes as needed
+  };
+
+  
 
 
   const handleSubmit = async (event) => {
@@ -22,6 +38,12 @@ function TeamStats() {
         const data = await response.json();
         setTeamStats(data);
         console.log(data);
+
+        // Update border color based on the first team's name
+        if (data.length > 0) {
+          const teamColorClass = teamColors[data[0].TEAM_NAME] || 'border-gray-200'; // Default to gray if team is not found
+          setBorderColorClass(teamColorClass);
+        }
       } else {
         console.error('HTTP Error:', response.statusText);
       }
@@ -30,20 +52,11 @@ function TeamStats() {
     }
   };
 
-  //useEffect(() => {
-  //  if (teamStats.length > 0) {
-  //    setSelectedTeam(teamStats[0].TEAM_NAME);
-  //  }
-  // }, [teamStats]);
-
 
   return (
     <>
       <div 
-        className='mt-[150px] flex justify-center py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-3/4 mx-auto'
-        //style={{
-        // border: `4px solid ${teamColors[selectedTeam] || 'gray'}`, // Dynamic border color based on selected team
-        //}}
+       className={`mt-[150px] flex justify-center py-3 px-6 bg-gray-50 rounded border-[3px] ${borderColorClass} w-3/4 h-3/4 mx-auto`}
       >
         
         <form onSubmit={handleSubmit} className="flex">
@@ -63,7 +76,7 @@ function TeamStats() {
         </form>
       </div>
 
-      <div className='flex justify-center py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-3/4 mx-auto'>
+      <div className={`flex justify-center py-3 px-6 bg-gray-50 border rounded ${borderColorClass}  w-3/4 h-3/4 mx-auto`}>
         <button  type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
           <p>Traditonal</p>
         </button>
@@ -75,7 +88,7 @@ function TeamStats() {
         </button>
       </div>
 
-      <div className='py-3 px-6 bg-gray-50 border-b rounded w-3/4 h-[270px] mx-auto overflow-x-auto'>
+      <div className={`py-3 px-6 bg-gray-50 border rounded ${borderColorClass} w-3/4 h-[270px] mx-auto overflow-x-auto`}>
         {teamStats.map((team, index) => (
           <div key={index} className='mb-4' 
               
@@ -162,11 +175,8 @@ function TeamStats() {
                 <li className="w-[79px] text-center">{team.PFD_RANK}</li>
                 <li className="w-[85px] text-center">{team.PTS_RANK}</li>
                 <li className="w-[75px] text-center">{team.PLUS_MINUS_RANK}</li>
-                
-
-                
               </ul>
-              </div>
+            </div>
             </div>
           </div>
         ))}
