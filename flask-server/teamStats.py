@@ -21,7 +21,7 @@ def get_database_connection():
         print(f"Error connecting to MySQL Database: {e}")
         return None
 
-@app.route('/TeamStats', methods=['GET'])
+@app.route('/TeamStats/traditional', methods=['GET'])
 @cross_origin()
 
 def search_team():

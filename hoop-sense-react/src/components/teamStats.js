@@ -77,9 +77,9 @@ function TeamStats() {
   
 
 
-  const handleSubmit = async (event) => {
+  const handleSubmitTraditional = async (event) => {
     event.preventDefault();
-    const url = `http://localhost:5001/TeamStats?name=${encodeURIComponent(searchTerm)}`;
+    const url = `http://localhost:5001/TeamStats/traditional?name=${encodeURIComponent(searchTerm)}`;
     try {
       const response = await fetch(url, {
         method: 'GET',
@@ -125,7 +125,7 @@ function TeamStats() {
        className={`mt-[150px] flex justify-center py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-t-[2px] border-b-[2px] rounded-t-[5px]  ${borderColorClass} w-3/4 h-3/4 mx-auto`}
       >
         
-        <form onSubmit={handleSubmit} className="flex">
+        <form onSubmit={handleSubmitTraditional} className="flex">
           <input 
             type="text" 
             name="search" 
