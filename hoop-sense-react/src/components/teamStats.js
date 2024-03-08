@@ -5,6 +5,7 @@ function TeamStats() {
   const [searchTerm, setSearchTerm] = useState('');
   const [teamStats, setTeamStats] = useState([]);
   const [borderColorClass, setBorderColorClass] = useState('border-gray-200'); // Default border color
+  const [statType, setStatType] = useState('')
 
   const teamColors = {
     "Milwaukee Bucks": "border-green-500",
@@ -17,7 +18,7 @@ function TeamStats() {
     "Los Angeles Clippers": "border-red-700",
     "Phoenix Suns": "border-orange-500",
     "Dallas Mavericks": "border-blue-700",
-    // Add more teams and their corresponding Tailwind border color classes as needed
+   
   };
 
   
@@ -56,7 +57,7 @@ function TeamStats() {
   return (
     <>
       <div 
-       className={`mt-[150px] flex justify-center py-3 px-6 bg-gray-50 rounded border-[3px] ${borderColorClass} w-3/4 h-3/4 mx-auto`}
+       className={`mt-[150px] flex justify-center py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-t-[2px] border-b-[2px] rounded-t-[5px]  ${borderColorClass} w-3/4 h-3/4 mx-auto`}
       >
         
         <form onSubmit={handleSubmit} className="flex">
@@ -76,7 +77,7 @@ function TeamStats() {
         </form>
       </div>
 
-      <div className={`flex justify-center py-3 px-6 bg-gray-50 border rounded ${borderColorClass}  w-3/4 h-3/4 mx-auto`}>
+      <div className={`flex justify-center py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] ${borderColorClass}  w-3/4 h-3/4 mx-auto`}>
         <button  type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
           <p>Traditonal</p>
         </button>
@@ -88,7 +89,7 @@ function TeamStats() {
         </button>
       </div>
 
-      <div className={`py-3 px-6 bg-gray-50 border rounded ${borderColorClass} w-3/4 h-[270px] mx-auto overflow-x-auto`}>
+      <div className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] ${borderColorClass} w-3/4 h-[270px] mx-auto overflow-x-auto`}>
         {teamStats.map((team, index) => (
           <div key={index} className='mb-4' 
               
