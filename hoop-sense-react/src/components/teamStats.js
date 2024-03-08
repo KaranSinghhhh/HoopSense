@@ -6,6 +6,8 @@ function TeamStats() {
   const [teamStats, setTeamStats] = useState([]);
   const [borderColorClass, setBorderColorClass] = useState('border-gray-200'); // Default border color
   const [statType, setStatType] = useState('')
+  const [showTraditionalStats, setShowTraditionalStats] = useState(false); 
+  const [activeButton, setActiveButton] = useState(''); // Step 1
 
   const teamColors = {
     "Atlanta Hawks": "border-red-500",
@@ -107,6 +109,15 @@ function TeamStats() {
     }
   };
 
+  const handleTraditionalClick = () => { // Step 2: Update visibility on button click
+    setShowTraditionalStats(true);
+    setActiveButton('Traditional');
+  };
+
+  const getButtonClass = (buttonName) => {
+    return `ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none ${activeButton === buttonName ?  `${statType} text-white` : '' }`;
+  };
+
 
   return (
     <>
@@ -132,22 +143,22 @@ function TeamStats() {
       </div>
 
       <div className={`flex justify-center py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] ${borderColorClass}  w-3/4 h-3/4 mx-auto`}>
-        <button  type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+        <button onClick={handleTraditionalClick} className={getButtonClass('Traditional')} > 
           <p>Traditonal</p>
         </button>
-        <button type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+        <button type="submit" className="ml-2 flex text-black items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
           Defense
         </button>
-        <button  type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+        <button  type="submit" className="ml-2 flex text-black items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
           Advanced
         </button>
       </div>
 
+    
       <div className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] ${borderColorClass} w-3/4 h-[270px] mx-auto overflow-x-auto`}>
         {teamStats.map((team, index) => (
-          <div key={index} className='mb-4' 
-              
-          >
+          showTraditionalStats &&
+          <div key={index} className='mb-4'>
           
             <h1>{team.TEAM_NAME}</h1>
             <p>Games Played: {team.GP}</p>
@@ -155,7 +166,7 @@ function TeamStats() {
             
             <div className='mt-[20px] overflow-x-auto'>
               <div style={{ minWidth: 'max-content' }}>
-              <ul className={`flex gap-[20px] justify-start items-center rounded-[3px] ${statType}`}>
+              <ul className={`flex gap-[20px] justify-start items-center  ${statType}`}>
               <li>Type</li> 
                 <li className="w-[80px] text-center" >FGM</li>
                 <li className="w-[80px] text-center">FGA</li>
@@ -234,10 +245,13 @@ function TeamStats() {
             </div>
             </div>
           </div>
-        ))}
+            
+          ))}
       </div>
+            
     </>
   );
+        
 }
 
 export default TeamStats;
