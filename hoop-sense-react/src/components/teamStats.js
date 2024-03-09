@@ -6,6 +6,8 @@ import TraditionalStats from './TraditionalStats';
 function TeamStats() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentView, setCurrentView] = useState(''); // 'traditional', 'defensive', 'advanced'
+ 
+  const [borderTeamColor, setBorderTeamColor] = useState('')
   const teamColors = {
     // Your teamColors object
     "Atlanta Hawks": "border-red-500",
@@ -75,13 +77,24 @@ function TeamStats() {
 
   const handleStatsViewChange = (view) => {
     setCurrentView(view);
+
+    const teamBordor = teamColors[searchTerm] || 'bg-gray-200'; // Default color if team not found
+    setBorderTeamColor(teamBordor)
+
   };
 
-  
+  const getButtonColor = (view) => {
+    // Derive the button color based on the searchTerm and whether it matches the currentView
+    const isActive = currentView === view;
+    const teamColor = isActive ? statColors[searchTerm] : 'bg-white';
+    return `${isActive ? teamColor : 'bg-white'} ml-2 flex text-black items-center justify-center p-2 rounded-2xl ring-2 ring-gray-300 border-none`;
+  };
+
+
 
   return (
     <>
-      <div className="mt-[150px] flex justify-center py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-t-[2px] border-b-[2px] rounded-t-[5px] w-3/4 h-3/4 mx-auto">
+      <div className={`mt-[150px] flex justify-center py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-t-[2px] border-b-[2px] rounded-t-[5px] w-3/4 h-3/4 mx-auto ${borderTeamColor}`}>
         <form onSubmit={(e) => e.preventDefault()} className="flex">
           <input 
             type="text" 
@@ -99,19 +112,26 @@ function TeamStats() {
         </form>
       </div>
 
-      <div className={`flex justify-center py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] w-3/4 h-3/4 mx-auto`}>
-        <button onClick={() => handleStatsViewChange('traditional')} className="ml-2 flex text-black items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+      <div className={`flex justify-center py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] w-3/4 h-3/4 mx-auto ${borderTeamColor}`}>
+        <button 
+          onClick={() => handleStatsViewChange('traditional')} 
+          className={getButtonColor('traditional')}> 
           Traditional
-        </button>
-        <button onClick={() => handleStatsViewChange('defensive')} className="ml-2 flex text-black items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+          </button>
+        <button 
+          onClick={() => handleStatsViewChange('defensive')} 
+          className={getButtonColor('defensive')}> 
           Defense
         </button>
-        <button onClick={() => handleStatsViewChange('advanced')} className="ml-2 flex text-black items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none"> 
+        <button 
+          onClick={() => handleStatsViewChange('advanced')} 
+          className={getButtonColor('advanced')}> 
           Advanced
         </button>
       </div>
 
-      <div className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] w-3/4 h-[270px] mx-auto overflow-x-auto `}>
+      <div 
+        className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] w-3/4 h-[270px] mx-auto overflow-x-auto ${borderTeamColor}`}>
         {currentView === 'traditional' && <TraditionalStats searchTerm={searchTerm} teamColors={teamColors} statColors={statColors} />}
       </div>
 
