@@ -58,3 +58,184 @@ try:
 except KeyError as e:
    print("Error parsing data:", e)
    sys.exit(1)
+
+try:
+   db = mysql.connector.connect(
+   host="localhost",
+   user="root",
+   password="password",
+   database="HoopSense"
+   )
+   mycursor = db.cursor()
+except mysql.connector.Error as err:
+   print("Database connection failed:", err)
+   exit(1)  # Exit the script if DB connection fails
+
+
+check_query = """
+SELECT COUNT(*) FROM TEAMS_DEFENSE_2023_24 WHERE GP > 0;
+"""
+try:
+    mycursor.execute(check_query)
+    result = mycursor.fetchone()
+    if result[0] > 0:
+        print("Error: Data for the 2023-24 defense season already exists. Running this script again will result in duplicate entries.")
+        sys.exit(1)  # Exit the script to prevent duplicate runs
+except mysql.connector.Error as err:
+    print("Error checking existing data:", err)
+    mycursor.close()
+    db.close()
+    sys.exit(1)
+
+columns_list = [
+    "TEAM_ID",
+    "TEAM_NAME",
+    "GP",
+    "W",
+    "L",
+    "W_PCT",
+    "MIN",
+    "DEF_RATING",
+    "DREB",
+    "DREB_PCT",
+    "STL",
+    "BLK",
+    "OPP_PTS_OFF_TOV",
+    "OPP_PTS_2ND_CHANCE",
+    "OPP_PTS_FB",
+    "OPP_PTS_PAINT",
+    "GP_RANK",
+    "W_RANK",
+    "L_RANK",
+    "W_PCT_RANK",
+    "MIN_RANK",
+    "DEF_RATING_RANK",
+    "DREB_RANK",
+    "DREB_PCT_RANK",
+    "STL_RANK",
+    "BLK_RANK",
+    "OPP_PTS_OFF_TOV_RANK",
+    "OPP_PTS_2ND_CHANCE_RANK",
+    "OPP_PTS_FB_RANK",
+    "OPP_PTS_PAINT_RANK"
+]
+
+create_table_query = """
+    CREATE TABLE IF NOT EXISTS TEAMS_DEFENSE_2023_24 (
+    TEAM_ID INT PRIMARY KEY,
+    TEAM_NAME VARCHAR(255),
+    GP INT,
+    W INT,
+    L INT,
+    W_PCT FLOAT,
+    MIN FLOAT,
+    DEF_RATING FLOAT,
+    DREB INT,
+    DREB_PCT FLOAT,
+    STL INT,
+    BLK INT,
+    OPP_PTS_OFF_TOV INT,
+    OPP_PTS_2ND_CHANCE INT,
+    OPP_PTS_FB INT,
+    OPP_PTS_PAINT INT,
+    GP_RANK INT,
+    W_RANK INT,
+    L_RANK INT,
+    W_PCT_RANK INT,
+    MIN_RANK INT,
+    DEF_RATING_RANK INT,
+    DREB_RANK INT,
+    DREB_PCT_RANK INT,
+    STL_RANK INT,
+    BLK_RANK INT,
+    OPP_PTS_OFF_TOV_RANK INT,
+    OPP_PTS_2ND_CHANCE_RANK INT,
+    OPP_PTS_FB_RANK INT,
+    OPP_PTS_PAINT_RANK INT
+);
+"""
+
+insert_statement = """
+    INSERT INTO TEAMS_DEFENSE_2023_24 (
+    TEAM_ID, 
+    TEAM_NAME, 
+    GP, 
+    W, 
+    L, 
+    W_PCT, 
+    MIN, 
+    DEF_RATING, 
+    DREB, 
+    DREB_PCT, 
+    STL, 
+    BLK, 
+    OPP_PTS_OFF_TOV, 
+    OPP_PTS_2ND_CHANCE, 
+    OPP_PTS_FB, 
+    OPP_PTS_PAINT, 
+    GP_RANK, 
+    W_RANK, 
+    L_RANK, 
+    W_PCT_RANK, 
+    MIN_RANK, 
+    DEF_RATING_RANK, 
+    DREB_RANK, 
+    DREB_PCT_RANK, 
+    STL_RANK, 
+    BLK_RANK, 
+    OPP_PTS_OFF_TOV_RANK, 
+    OPP_PTS_2ND_CHANCE_RANK, 
+    OPP_PTS_FB_RANK, 
+    OPP_PTS_PAINT_RANK
+) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+ON DUPLICATE KEY UPDATE 
+    TEAM_NAME = VALUES(TEAM_NAME),
+    GP = VALUES(GP),
+    W = VALUES(W),
+    L = VALUES(L),
+    W_PCT = VALUES(W_PCT),
+    MIN = VALUES(MIN),
+    DEF_RATING = VALUES(DEF_RATING),
+    DREB = VALUES(DREB),
+    DREB_PCT = VALUES(DREB_PCT),
+    STL = VALUES(STL),
+    BLK = VALUES(BLK),
+    OPP_PTS_OFF_TOV = VALUES(OPP_PTS_OFF_TOV),
+    OPP_PTS_2ND_CHANCE = VALUES(OPP_PTS_2ND_CHANCE),
+    OPP_PTS_FB = VALUES(OPP_PTS_FB),
+    OPP_PTS_PAINT = VALUES(OPP_PTS_PAINT),
+    GP_RANK = VALUES(GP_RANK),
+    W_RANK = VALUES(W_RANK),
+    L_RANK = VALUES(L_RANK),
+    W_PCT_RANK = VALUES(W_PCT_RANK),
+    MIN_RANK = VALUES(MIN_RANK),
+    DEF_RATING_RANK = VALUES(DEF_RATING_RANK),
+    DREB_RANK = VALUES(DREB_RANK),
+    DREB_PCT_RANK = VALUES(DREB_PCT_RANK),
+    STL_RANK = VALUES(STL_RANK),
+    BLK_RANK = VALUES(BLK_RANK),
+    OPP_PTS_OFF_TOV_RANK = VALUES(OPP_PTS_OFF_TOV_RANK),
+    OPP_PTS_2ND_CHANCE_RANK = VALUES(OPP_PTS_2ND_CHANCE_RANK),
+    OPP_PTS_FB_RANK = VALUES(OPP_PTS_FB_RANK),
+    OPP_PTS_PAINT_RANK = VALUES(OPP_PTS_PAINT_RANK);
+"""
+
+
+try:
+   mycursor.execute(create_table_query)
+   print("Table created successfully or already exists.")
+except mysql.connector.Error as err:
+   print("Error creating table:", err)
+   exit(1)  # Exit if table creation fails
+  
+try:
+   for team_data in all_teams_data:
+       mycursor.execute(insert_statement, tuple(team_data))
+   db.commit()  # Commit the transaction to save changes
+   print(f"Inserted {len(all_teams_data)} records successfully.")
+except mysql.connector.Error as err:
+   db.rollback()  # Rollback in case of any error during insertion
+   print("Error inserting data:", err)
+finally:
+   mycursor.close()
+   db.close()  # Close the database connection
