@@ -48,7 +48,7 @@ function TraditionalStats({ searchTerm, teamColors, statColors }) {
             <h1>{team.TEAM_NAME}</h1>
             <p>Games Played: {team.GP}</p>
             <p>Wins: {team.W} | Loss: {team.L}</p>
-            <div className='border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px]    mt-[20px] overflow-x-auto' style={{ minWidth: 'max-content' }}>
+            <div className='border-l-[2px] border-r-[2px] border-t-[2px] border-b-[2px] rounded-b-[5px] mt-[20px] overflow-x-auto' style={{ minWidth: 'max-content' }}>
               <ul className={`flex gap-[20px] justify-start items-center ${statType}`}>
                 <li>Type</li>
                 {/* Add the rest of the stats here as you see fit */}
@@ -87,7 +87,7 @@ function TraditionalStats({ searchTerm, teamColors, statColors }) {
                 <li className="w-[83px] text-center">{team.FG3A}</li>
                 <li className="w-[75px] text-center">{team.FG3_PCT}</li>
                 <li className="w-[87px] text-center">{team.FTM}</li>
-                <li className="w-[75px] text-center" >{team.FTA}</li>
+                <li className="w-[75px] text-center">{team.FTA}</li>
                 <li className="w-[75px] text-center">{team.FT_PCT}</li>
                 <li className="w-[92px] text-center">{team.REB}</li>
                 <li className="w-[75px] text-center">{team.OREB}</li>

@@ -40,7 +40,7 @@ function DefensiveStats({ searchTerm }) { // Define the functional component Def
                     <h1>{team.TEAM_NAME}</h1>
                     <p>Games Played: {team.GP}</p>
                     <p>Wins: {team.W} | Losses: {team.L} </p>
-                    <div className='border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] mt-[20px] overflow-x-auto' style={{ minWidth: 'max-content' }}>
+                    <div className='border-l-[2px] border-r-[2px] border-b-[2px] border-t-[2px] rounded-b-[5px] mt-[20px] overflow-x-auto' style={{ minWidth: 'max-content' }}>
                     <ul className={`flex gap-[20px] justify-start items-center `}>
                         <li>Type</li>
                         <li className="w-[150px] text-center">DEF RATING</li>
