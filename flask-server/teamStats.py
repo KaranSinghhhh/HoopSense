@@ -57,7 +57,7 @@ def search_defensive_team():
         try:
             cursor = connection.cursor(dictionary=True)
             query = """
-            SELECT TEAM_NAME FROM TEAMS_DEFENSE_2023_24
+            SELECT TEAM_NAME, GP, W, L FROM TEAMS_DEFENSE_2023_24
             WHERE TEAM_NAME LIKE %s
             """
             cursor.execute(query, (f"%{team_name_query}%",))

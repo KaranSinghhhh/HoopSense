@@ -92,8 +92,8 @@ function TeamStats() {
  const getButtonColor = (view) => {
    // Derive the button color based on the searchTerm and whether it matches the currentView
    const isActive = currentView === view;
-   const teamColor = isActive ? statColors[searchTerm] : 'bg-grey';
-   return `${isActive ? teamColor : 'bg-grey'} ml-2 flex text-black items-center justify-center p-2 rounded-2xl ring-2 ring-gray-300 border-none`;
+   const teamColor = isActive ? statColors[searchTerm] : 'bg-gray-200';
+   return `${isActive ? teamColor : 'bg-gray-200'} ml-2 flex text-black items-center justify-center p-2 rounded-2xl ring-2 ring-gray-300 border-none`;
  };
 
 
