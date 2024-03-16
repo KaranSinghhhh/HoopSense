@@ -1,5 +1,5 @@
 // TeamStats.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import TraditionalStats from './TraditionalStats';
 import DefensiveStats from './DefensiveStats';
@@ -9,7 +9,11 @@ function TeamStats() {
  const [searchTerm, setSearchTerm] = useState('');
  const [currentView, setCurrentView] = useState(''); // 'traditional', 'defensive', 'advanced'
  const [borderTeamColor, setBorderTeamColor] = useState('bg-gray-200')
-  const teamColors = {
+
+ const [filteredTeams, setFilteredTeams] = useState([]);
+ const inputRef = useRef(null); // Reference to the input field
+  
+ const teamColors = {
    // Your teamColors object
    "Atlanta Hawks": "border-red-500",
    "Boston Celtics": "border-green-600",
@@ -95,7 +99,31 @@ function TeamStats() {
    const teamColor = isActive ? statColors[searchTerm] : 'bg-gray-200';
    return `${isActive ? teamColor : 'bg-gray-200'} ml-2 flex text-black items-center justify-center p-2 rounded-2xl ring-2 ring-gray-300 border-none`;
  };
+ 
+ const filterTeams = (input) => {
+  if (!input) {
+    setFilteredTeams([]);
+  } else {
+    const filtered = Object.keys(teamColors).filter(team =>
+      team.toLowerCase().includes(input.toLowerCase())
+    );
+    setFilteredTeams(filtered);
+  }
+};
 
+// Close the dropdown when clicking outside
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (inputRef.current && !inputRef.current.contains(event.target)) {
+      setFilteredTeams([]);
+    }
+  };
+
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+}, [inputRef]);
 
 
 
@@ -113,11 +141,30 @@ function TeamStats() {
            aria-label="Search team"
            className="px-3 py-2 font-semibold placeholder-gray-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2"
            value={searchTerm}
-           onChange={(e) => setSearchTerm(e.target.value)}
+           onChange={ (e) => {
+            //(e) => setSearchTerm(e.target.value)
+            setSearchTerm(e.target.value);
+            filterTeams(e.target.value);
+          }}
          />
-         <button type="submit" className="ml-2 flex text-gray-500 items-center justify-center p-2 bg-white rounded-2xl ring-2 ring-gray-300 border-none">
-           <FaSearch />
-         </button>
+         {filteredTeams.length > 0 && (
+         <div className="absolute bg-white border border-gray-200 mt-12 rounded-md w-[210px] z-10">
+            {filteredTeams.map((team, index) => (
+              <div
+                key={index}
+                className="p-2 hover:bg-gray-100 cursor-pointer"
+                onClick={() => {
+                  setSearchTerm(team);
+                  setFilteredTeams([]);
+                }}
+              >
+                {team}
+              </div>
+            ))}
+          </div>
+          )
+        }
+     
        </form>
      </div>
 
