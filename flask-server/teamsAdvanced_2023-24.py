@@ -72,6 +72,22 @@ except mysql.connector.Error as err:
    print("Database connection failed:", err)
    exit(1)  # Exit the script if DB connection fails
 
+
+check_query = """
+SELECT COUNT(*) FROM TEAMS_ADVANCED_2023_24 WHERE GP > 0;
+"""
+try:
+    mycursor.execute(check_query)
+    result = mycursor.fetchone()
+    if result[0] > 0:
+        print("Error: Data for the 2023-24 Advanced season already exists. Running this script again will result in duplicate entries.")
+        sys.exit(1)  # Exit the script to prevent duplicate runs
+except mysql.connector.Error as err:
+    print("Error checking existing data:", err)
+    mycursor.close()
+    db.close()
+    sys.exit(1)
+
 columns_list = [
                 "TEAM_ID",
                 "TEAM_NAME",
@@ -175,7 +191,125 @@ CREATE TABLE IF NOT EXISTS TEAMS_ADVANCED_2023_24 (
 
 insert_statement = """
     INSERT INTO TEAMS_ADVANCED_2023_24 (
-    
-    )
+    TEAM_ID,
+    TEAM_NAME,
+    GP,
+    W,
+    L,
+    W_PCT,
+    MIN,
+    E_OFF_RATING,
+    OFF_RATING,
+    E_DEF_RATING,
+    DEF_RATING,
+    E_NET_RATING,
+    NET_RATING,
+    AST_PCT,
+    AST_TO,
+    AST_RATIO,
+    OREB_PCT,
+    DREB_PCT,
+    REB_PCT,
+    TM_TOV_PCT,
+    EFG_PCT,
+    TS_PCT,
+    E_PACE,
+    PACE,
+    PACE_PER40,
+    POSS,
+    PIE,
+    GP_RANK,
+    W_RANK,
+    L_RANK,
+    W_PCT_RANK,
+    MIN_RANK,
+    OFF_RATING_RANK,
+    DEF_RATING_RANK,
+    NET_RATING_RANK,
+    AST_PCT_RANK,
+    AST_TO_RANK,
+    AST_RATIO_RANK,
+    OREB_PCT_RANK,
+    DREB_PCT_RANK,
+    REB_PCT_RANK,
+    TM_TOV_PCT_RANK,
+    EFG_PCT_RANK,
+    TS_PCT_RANK,
+    PACE_RANK,
+    PIE_RANK
+) VALUES (
+    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+    %s, %s, %s, %s, %s, %s);
+
+    ON DUPLICATE KEY UPDATE 
+    TEAM_NAME = VALUES(TEAM_NAME),
+    GP = VALUES(GP),
+    W = VALUES(W),
+    L = VALUES(L),
+    W_PCT = VALUES(W_PCT),
+    MIN = VALUES(MIN),
+    E_OFF_RATING = VALUES(E_OFF_RATING),
+    OFF_RATING = VALUES(OFF_RATING),
+    E_DEF_RATING = VALUES(E_DEF_RATING),
+    DEF_RATING = VALUES(DEF_RATING),
+    E_NET_RATING = VALUES(E_NET_RATING),
+    NET_RATING = VALUES(NET_RATING),
+    AST_PCT = VALUES(AST_PCT),
+    AST_TO = VALUES(AST_TO),
+    AST_RATIO = VALUES(AST_RATIO),
+    OREB_PCT = VALUES(OREB_PCT),
+    DREB_PCT = VALUES(DREB_PCT),
+    REB_PCT = VALUES(REB_PCT),
+    TM_TOV_PCT = VALUES(TM_TOV_PCT),
+    EFG_PCT = VALUES(EFG_PCT),
+    TS_PCT = VALUES(TS_PCT),
+    E_PACE = VALUES(E_PACE),
+    PACE = VALUES(PACE),
+    PACE_PER40 = VALUES(PACE_PER40),
+    POSS = VALUES(POSS),
+    PIE = VALUES(PIE),
+    GP_RANK = VALUES(GP_RANK),
+    W_RANK = VALUES(W_RANK),
+    L_RANK = VALUES(L_RANK),
+    W_PCT_RANK = VALUES(W_PCT_RANK),
+    MIN_RANK = VALUES(MIN_RANK),
+    OFF_RATING_RANK = VALUES(OFF_RATING_RANK),
+    DEF_RATING_RANK = VALUES(DEF_RATING_RANK),
+    NET_RATING_RANK = VALUES(NET_RATING_RANK),
+    AST_PCT_RANK = VALUES(AST_PCT_RANK),
+    AST_TO_RANK = VALUES(AST_TO_RANK),
+    AST_RATIO_RANK = VALUES(AST_RATIO_RANK),
+    OREB_PCT_RANK = VALUES(OREB_PCT_RANK),
+    DREB_PCT_RANK = VALUES(DREB_PCT_RANK),
+    REB_PCT_RANK = VALUES(REB_PCT_RANK),
+    TM_TOV_PCT_RANK = VALUES(TM_TOV_PCT_RANK),
+    EFG_PCT_RANK = VALUES(EFG_PCT_RANK),
+    TS_PCT_RANK = VALUES(TS_PCT_RANK),
+    PACE_RANK = VALUES(PACE_RANK),
+    PIE_RANK = VALUES(PIE_RANK);
+   
 
 """
+
+try:
+   mycursor.execute(create_table_query)
+   print("Table created successfully or already exists.")
+except mysql.connector.Error as err:
+   print("Error creating table:", err)
+   exit(1)  # Exit if table creation fails
+  
+try:
+   for team_data in all_teams_data:
+       mycursor.execute(insert_statement, tuple(team_data))
+   db.commit()  # Commit the transaction to save changes
+   print(f"Inserted {len(all_teams_data)} records successfully.")
+
+except mysql.connector.Error as err:
+   db.rollback()  # Rollback in case of any error during insertion
+   print("Error inserting data:", err)
+finally:
+   mycursor.close()
+   db.close()  # Close the database connection
+
+
