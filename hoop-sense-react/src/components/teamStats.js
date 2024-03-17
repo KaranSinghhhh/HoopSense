@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import TraditionalStats from './TraditionalStats';
 import DefensiveStats from './DefensiveStats';
+import AdvancedStats from './AdvancedStats';
+
 
 
 function TeamStats() {
@@ -192,6 +194,7 @@ useEffect(() => {
        className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] w-3/4 h-[300px] mx-auto overflow-x-auto ${borderTeamColor}`}>
        {currentView === 'traditional' && <TraditionalStats searchTerm={searchTerm} teamColors={teamColors} statColors={statColors} />}
        {currentView === 'defensive' && <DefensiveStats searchTerm={searchTerm} teamColors={teamColors} statColors={statColors} />}
+       {currentView === 'advanced' && <AdvancedStats searchTerm={searchTerm} teamColors={teamColors} statColors={statColors} />}
      </div>
 
      
