@@ -70,6 +70,35 @@ def search_defensive_team():
             connection.close()
     else:
         return {"error": "Database connection failed"}, 500
+
+@app.route('/TeamStats/advanced', methods=['GET'])
+@cross_origin()
+
+def search_advanced_team():
+    """Endpoint to search for a team by name"""
+    team_name_query = request.args.get('name', default='', type=str)
+    connection = get_database_connection()
+    if connection is not None:
+        try:
+            cursor = connection.cursor(dictionary=True)
+            query = """
+            SELECT TEAM_NAME, GP, W, L, E_OFF_RATING, OFF_RATING, E_DEF_RATING, DEF_RATING, E_NET_RATING, NET_RATING, AST_PCT, AST_TO, AST_RATIO, OREB_PCT, DREB_PCT, REB_PCT, TM_TOV_PCT, EFG_PCT, TS_PCT, E_PACE, PACE, PACE_PER40, POSS, PIE,OFF_RATING_RANK, DEF_RATING_RANK, NET_RATING_RANK, AST_PCT_RANK, AST_TO_RANK, AST_RATIO_RANK, OREB_PCT_RANK, DREB_PCT_RANK, REB_PCT_RANK, TM_TOV_PCT_RANK, EFG_PCT_RANK, TS_PCT_RANK, PACE_RANK, PIE_RANK FROM TEAMS_ADVANCED_2023_24
+            WHERE TEAM_NAME LIKE %s
+            """
+            cursor.execute(query, (f"%{team_name_query}%",))
+            results = cursor.fetchall()
+            return jsonify(results)
+        except Error as e:
+            print(f"SQL Error: {e}")  # Log the exact error to the console
+            return {"error": str(e)}, 500
+        finally:
+            cursor.close()
+            connection.close()
+    else:
+        return {"error": "Database connection failed"}, 500
+    
+
+
     
 
 if __name__ == '__main__':
