@@ -2,6 +2,7 @@ import mysql.connector
 import requests
 import json
 import csv
+import sys
 
 season_id = '2023-24'
 per_mode = 'Totals'
@@ -140,6 +141,21 @@ with open('nba_players_data_2020-2021.csv', 'w', newline='', encoding='utf-8') a
    writer.writerow(columns_list)  # Write the header
    writer.writerows(all_players_data)  # Write the player data
 '''
+
+check_query = """
+SELECT COUNT(*) FROM TEAMS_ADVANCED_2023_24 WHERE GP > 0;
+"""
+try:
+    mycursor.execute(check_query)
+    result = mycursor.fetchone()
+    if result[0] > 0:
+        print("Error: Data for the 2023-24 Advanced season already exists. Running this script again will result in duplicate entries.")
+        sys.exit(1)  # Exit the script to prevent duplicate runs
+except mysql.connector.Error as err:
+    print("Error checking existing data:", err)
+    mycursor.close()
+    db.close()
+    sys.exit(1)
 
 
 
@@ -288,9 +304,6 @@ WNBA_FANTASY_PTS_RANK
  %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
  %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
  %s, %s, %s, %s, %s, %s, %s, %s, %s)
-"""
-
-"""
 ON DUPLICATE KEY UPDATE 
 PLAYER_NAME=VALUES(PLAYER_NAME),
 NICKNAME=VALUES(NICKNAME),
