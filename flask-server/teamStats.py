@@ -20,6 +20,8 @@ def get_database_connection():
     except Error as e:
         print(f"Error connecting to MySQL Database: {e}")
         return None
+    
+
 
 @app.route('/TeamStats/traditional', methods=['GET'])
 @cross_origin()

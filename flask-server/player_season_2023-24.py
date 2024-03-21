@@ -27,7 +27,7 @@ try:
    db = mysql.connector.connect(
    host="localhost",
    user="root",
-   password="",
+   password="password",
    database="HoopSense"
    )
    mycursor = db.cursor()
@@ -283,7 +283,14 @@ NBA_FANTASY_PTS_RANK,
 DD2_RANK,
 TD3_RANK,
 WNBA_FANTASY_PTS_RANK
-) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+) VALUES 
+(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+ %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+ %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+ %s, %s, %s, %s, %s, %s, %s, %s, %s)
+"""
+
+"""
 ON DUPLICATE KEY UPDATE 
 PLAYER_NAME=VALUES(PLAYER_NAME),
 NICKNAME=VALUES(NICKNAME),

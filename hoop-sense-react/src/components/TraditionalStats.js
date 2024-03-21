@@ -78,7 +78,6 @@ function TraditionalStats({ searchTerm, teamColors, statColors }) {
               </ul>
               <hr></hr> 
               <ul className='flex gap-[20px] justify-start items-center'>
-                {/* Add the team specific stats here */}
                 <li >Team</li> 
                 <li className="w-[73px] text-center">{team.FGM}</li>
                 <li className="w-[82px] text-center">{team.FGA}</li>
@@ -104,7 +103,6 @@ function TraditionalStats({ searchTerm, teamColors, statColors }) {
               </ul>
               <hr></hr>
               <ul className='flex gap-[20px] justify-start items-center'>
-                {/* Add the rank specific stats here if needed */}
                 <li>Rank</li>
                 <li className="w-[75px] text-center">{team.FGM_RANK}</li>
                 <li className="w-[75px] text-center">{team.FGA_RANK}</li>

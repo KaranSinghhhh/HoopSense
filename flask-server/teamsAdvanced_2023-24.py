@@ -74,7 +74,7 @@ except mysql.connector.Error as err:
 
 
 check_query = """
-SELECT COUNT(*) FROM TEAMS_ADVANCED_2023_24 WHERE GP > 0;
+SELECT COUNT(*) FROM PLAYERS_2023_24 WHERE AGE > 0;
 """
 try:
     mycursor.execute(check_query)
