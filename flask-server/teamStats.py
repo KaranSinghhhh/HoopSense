@@ -21,7 +21,31 @@ def get_database_connection():
         print(f"Error connecting to MySQL Database: {e}")
         return None
     
+@app.route('/PlayerStats', methods=['GET'])
+@cross_origin()
 
+
+def search_player():
+    """Endpoint to search for a player by name"""
+    team_name_query = request.args.get('name', default='', type=str)
+    connection = get_database_connection()
+    if connection is not None:
+        try:
+            cursor = connection.cursor(dictionary=True)
+            query = """
+            SELECT PLAYER_NAME, AGE, GP, W, L, W_PCT, MIN, FGM, FGA, FG_PCT, FG3M, FG3A, FG3_PCT, FTM, FTA, FT_PCT, OREB, DREB, REB, AST, TOV, STL, BLK, BLKA, PF, PFD, PTS, PLUS_MINUS FROM PLAYERS_2023_24
+            WHERE PLAYER_NAME LIKE %s
+            """
+            cursor.execute(query, (f"%{team_name_query}%",))
+            results = cursor.fetchall()
+            return jsonify(results)
+        except Error as e:
+            return {"error": str(e)}, 500
+        finally:
+            cursor.close()
+            connection.close()
+    else:
+        return {"error": "Database connection failed"}, 500  
 
 @app.route('/TeamStats/traditional', methods=['GET'])
 @cross_origin()
