@@ -95,12 +95,13 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
   
           <div key={index} className='mb-4'>
             <h1>{player.PLAYER_NAME}</h1>
+            <p>Age: {player.PLAYER_AGE} | Team: {player.TEAM_ABBREVIATION}</p>
             <p>Games Played: {player.GP}</p>
-            <p>Wins: {player.W} | Loss: {player.L}</p>
+            <p>W: {player.W} | L: {player.L}</p>
             
             <div className='mt-[20px] overflow-x-auto'>
               <div style={{ minWidth: 'max-content' }}>
-              <ul className={`flex gap-[20px] justify-start items-center`}>
+              <ul className={`flex gap-[20px] border-t-[2px] border-l-[2px] border-r-[2px] justify-start items-center`}>
                 <li>Type</li> 
                 <li className="w-[110px] text-center">MIN</li>
                 <li className="w-[80px] text-center">FGM</li>
@@ -127,7 +128,7 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
                                                                                 
               </ul>
               <hr></hr> 
-              <ul className='flex gap-[20px] justify-start items-center'>
+              <ul className='flex gap-[20px] border-l-[2px] border-r-[2px] justify-start items-center'>
                 <li>Player</li> 
                 <li className="w-[80px] text-center">{player.MIN}</li>
                 <li className="w-[120px] text-center">{player.FGM}</li>
@@ -156,7 +157,7 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
               </ul>
               <hr ></hr>
 
-              <ul className='flex gap-[20px] justify-start items-center'>
+              <ul className='flex gap-[20px] border-l-[2px] border-b-[2px] border-r-[2px] justify-start items-center'>
                 <li>Rank</li> 
                 <li className="w-[110px] text-center">{player.MIN_RANK}</li>
                 <li className="w-[80px] text-center">{player.FGM_RANK}</li>
@@ -199,3 +200,4 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
 }
 
 export default PlayerStats;
+ 
