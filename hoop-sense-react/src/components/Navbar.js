@@ -19,7 +19,7 @@ const Navbar = () => {
                             <ul className="hidden md:flex pr-4 mt-4">
                                 <Link to='/playerStats' className='flex px-4 py-3 text-slate-500'>Player Stats</Link>
                                 <Link to='/teamStats' className='flex px-4 py-3 text-slate-500'>Team Stats</Link>
-                                <Link to='/PlayerOrTeamComparisons' className='flex px-4 py-3 text-slate-500'>Player or Team Comparisons</Link>
+                                <Link to='/compareStats' className='flex px-4 py-3 text-slate-500'>Player or Team Comparisons</Link>
                             </ul>
                        
 

@@ -110,7 +110,7 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
       
       
       </div>
-      <div className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] w-3/4 h-[300px] mx-auto overflow-x-auto`}>
+      <div className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] w-3/4 h-[350px] mx-auto overflow-x-auto`}>
       {playerStats.map((player, index) => (
   
           <div key={index} className='mb-4'>

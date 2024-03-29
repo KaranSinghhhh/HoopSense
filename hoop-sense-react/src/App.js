@@ -7,7 +7,7 @@ import Support from './components/Support';
 
 import PlayerStats from './components/playerStats'; 
 import TeamStats from './components/teamStats'; 
-import PlayerOrTeamStats from './components/PlayerOrTeamStats'
+import CompareStats from './components/compareStats'
 
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
             
             <Route path="/playerStats" element={<PlayerStats />} />
             <Route path="/teamStats" element={<TeamStats />} />
-            <Route path="/Dashboard" element={<PlayerOrTeamStats/>} />
+            <Route path="/compareStats" element={<CompareStats/>} />
            
           </Routes>
           </div>
