@@ -59,13 +59,13 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
     setSearchTerm(value);
     if (value.length > 0) {
       const filteredSuggestions = playerNames.filter(name =>
-      name.toLowerCase().includes(value.toLowerCase())
+        name.toLowerCase().includes(value.toLowerCase())
       );
       setSuggestions(filteredSuggestions);
-      } else {
+    } else {
         setSuggestions([]);
-        }
-      };
+    }
+  };
       
         // Function to handle suggestion click
   const handleSuggestionClick = (name) => {
@@ -74,6 +74,10 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
     // Trigger search or any other logic as needed
   };
       
+  // Logging for debugging
+  useEffect(() => {
+    console.log("Current suggestions:", suggestions);
+  }, [suggestions]);
       
 
   return (
@@ -88,7 +92,23 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
             value={searchTerm}
             onChange={handleInputChange}
           />
+          {suggestions.length > 0 && (
+            <ul className="absolute z-10 list-none bg-white mt-1 max-h-60 overflow-auto border border-gray-300 rounded-md w-[210px]">
+              {suggestions.map((suggestion, index) => (
+                <li 
+                  key={index} 
+                  className="p-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => handleSuggestionClick(suggestion)}
+                >
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+          )}
+
         </form>
+      
+      
       </div>
       <div className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] w-3/4 h-[300px] mx-auto overflow-x-auto`}>
       {playerStats.map((player, index) => (

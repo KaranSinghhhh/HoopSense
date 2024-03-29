@@ -21,9 +21,34 @@ def get_database_connection():
         print(f"Error connecting to MySQL Database: {e}")
         return None
     
+@app.route('/PlayerNames', methods=['GET'])
+@cross_origin()
+def get_player_names():
+    """Endpoint to get a list of player names"""
+    connection = get_database_connection()
+    if connection is not None:
+        try:
+            cursor = connection.cursor(dictionary=True)
+            query = """
+            SELECT DISTINCT PLAYER_NAME FROM PLAYERS_2023_24
+            """
+            cursor.execute(query)
+            results = cursor.fetchall()
+            return jsonify(results)
+        except Error as e:
+            print(f"SQL Error: {e}")  # Log the exact error to the console
+            return {"error": str(e)}, 500
+        finally:
+            cursor.close()
+            connection.close()
+    else:
+        return {"error": "Database connection failed"}, 500
+
+
+
+
 @app.route('/PlayerStats', methods=['GET'])
 @cross_origin()
-
 
 def search_player():
     """Endpoint to search for a player by name"""
