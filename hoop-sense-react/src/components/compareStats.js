@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import TraditionalStats from './TraditionalStats';
+import DefensiveStats from './DefensiveStats';
+import AdvancedStats from './AdvancedStats';
+
 
 function CompareStats() {
     // State to track the selected option
@@ -135,9 +138,12 @@ function CompareStats() {
                 }
             </div>
 
-            <div className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] w-3/4 h-[350px] mx-auto`}>
+            <div className={`py-3 px-6 bg-gray-50 border-l-[2px] border-r-[2px] border-b-[2px] rounded-b-[5px] w-3/4 h-[350px] mx-auto overflow-x-auto`}>
                 {selectedTeamOption === "Traditional" && <TraditionalStats searchTerm={searchTerm}/>
-                    
+                }
+                {selectedTeamOption === "Defensive" && <DefensiveStats searchTerm={searchTerm}/>
+                }
+                {selectedTeamOption === "Advanced" && <AdvancedStats searchTerm={searchTerm}/>
                 }
             </div>
         </>
