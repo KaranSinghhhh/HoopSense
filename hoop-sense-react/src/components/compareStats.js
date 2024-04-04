@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import TraditionalStats from './TraditionalStats';
 import DefensiveStats from './DefensiveStats';
 import AdvancedStats from './AdvancedStats';
@@ -10,7 +10,9 @@ function CompareStats() {
     const [selectedTeamOption, setSelectedTeamOptiom] = useState('')
     const [teamInput, setTeamInput] = useState(''); // 'traditional', 'defensive', 'advanced'
     const [searchTerm, setSearchTerm] = useState('');
+    
     const [filteredTeams, setFilteredTeams] = useState([]);
+    const inputRef = useRef(null); // Reference to the input field
 
     const teamColors = {
         // Your teamColors object
@@ -69,6 +71,21 @@ function CompareStats() {
           setFilteredTeams(filtered);
         }
       };
+
+      // Close the dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+        if (inputRef.current && !inputRef.current.contains(event.target)) {
+            setFilteredTeams([]);
+        }
+        };
+    
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [inputRef]);
+  
   
     return (
         <>
@@ -101,10 +118,30 @@ function CompareStats() {
                         onChange={ (e) => {
                             setSearchTerm(e.target.value);
                             filterTeams(e.target.value);
-
-                            
                         }}
                         />
+
+                        {filteredTeams.length > 0 && (
+                                <div className="absolute bg-white border border-gray-200 mt-12 rounded-md w-[210px] z-10">
+                                    {filteredTeams.map((team, index) => (
+                                    <div
+                                        key={index}
+                                        className="p-2 hover:bg-gray-100 cursor-pointer"
+                                        onClick={() => {
+                                        setSearchTerm(team);
+                                        setFilteredTeams([]);
+                                        }}
+                                    >
+                                        {team}
+                                    </div>
+                                    ))}
+                                </div>
+                                )
+                                }
+                    
+                    
+                    
+                    
                     </form>
                 </div>
             }   
@@ -153,3 +190,5 @@ function CompareStats() {
 }
 
 export default CompareStats;
+
+        
