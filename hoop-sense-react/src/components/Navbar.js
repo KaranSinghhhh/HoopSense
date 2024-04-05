@@ -35,9 +35,9 @@ const Navbar = () => {
                         <ul className="hidden md:flex">
                                 
 
-                                <Link className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3' >Home</Link>
-                                <Link className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3 '>About</Link>
-                                <Link className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 '>Support</Link>
+                                <Link to="/Home" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3' >Home</Link>
+                                <Link to="/About" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3 '>About</Link>
+                                <Link to="/Support" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 '>Support</Link>
                         </ul>
                         
                        
@@ -53,13 +53,19 @@ const Navbar = () => {
                 </div>
                 
                 <ul className = {!nav ? 'hidden' : 'absolute bg-zinc-200 w-full px-8'}>
-                    <li className="border-b-2 border-zinc-300 w-full">Player Stats</li>
-                    <li className="border-b-2 border-zinc-300 w-full">Team Stats</li>
-                    <li className="border-b-2 border-zinc-300 w-full">Player or Team Comparisons</li>
+                    
                     <div className="flex flex-col my-4">
-                        <Link to='/sign-up' className=' text-indigo-600 border bg-indigo-600 border-indigo-600 hover:bg-transparent bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3' >Sign Up</Link>
-                        <Link to='/login' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 '>Log in</Link>
+                        <Link to="/playerStats" className="px-4 py-3 border-b-2 border-zinc-300 w-full">Player Stats</Link>
+                        <Link to="/teamStats" className="px-4 py-3 border-b-2 border-zinc-300 w-full">Team Stats</Link>
                     </div>
+
+                    <div className="flex flex-col my-4">
+                        <Link to='/Home' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3'>Home</Link>
+                        <Link to='/Login' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3'>About</Link>
+                        <Link to='/Support' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 '>Support</Link>
+                    </div>
+                  
+                    
                 </ul>
                 
             </div>
