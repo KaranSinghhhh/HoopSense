@@ -29,7 +29,7 @@ function App() {
             
             <Route path="/playerStats" element={<PlayerStats />} />
             <Route path="/teamStats" element={<TeamStats />} />
-            <Route path="/compareStats" element={<CompareStats/>} />
+            {/*<Route path="/compareStats" element={<CompareStats/>} />*/}
            
           </Routes>
           </div>

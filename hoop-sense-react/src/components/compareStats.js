@@ -138,10 +138,6 @@ function CompareStats() {
                                 </div>
                                 )
                                 }
-                    
-                    
-                    
-                    
                     </form>
                 </div>
             }   

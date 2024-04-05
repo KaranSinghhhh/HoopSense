@@ -29,10 +29,10 @@ const Hero = () => {
             border border-slate-300 rounded-xl text-center shadow-xl'>
 
                 <p>HoopSense Services</p>
-                <div className='flex justify-between flex-wrap px-4'>
-                    <p className='flex px-4 py-3 text-slate-500'><FaUser className='h-6 text-indigo-600 mr-1' /> Player Stats</p>
-                    <p className='flex px-4 py-3 text-slate-500'><FaUsers className='h-6 text-indigo-600 mr-1'/> Team Stats</p>
-                    <p className='flex px-4 py-3 text-slate-500'><AiOutlineTeam className='h-6 text-indigo-600 mr-1' /> Player or Team Comparisons</p>
+                <div className='flex justify-center items-center px-4 py-2 space-x-4'>
+                  <p className='flex items-center text-slate-500'><FaUser className='h-6 text-indigo-600 mr-1' /> Player Stats</p>
+                  <p className='flex items-center text-slate-500'><FaUsers className='h-6 text-indigo-600 mr-1'/> Team Stats</p>
+                    {/*<p className='flex px-4 py-3 text-slate-500'><AiOutlineTeam className='h-6 text-indigo-600 mr-1' /> Player or Team Comparisons</p>*/}
                   
                     {/*
                       <p className='flex px-4 py-3 text-slate-500'><BiStats className='h-6 text-indigo-600 mr-1'/> Team-by-Team Comparison</p>  
