@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
   return (
-    <div className='w-full mt-32 mb-32'>
+    <div id="about-section" className='w-full mt-32 mb-32'>
         <div className='max-w-[1240px] mx-auto'>
             <div className='text-center'>
                 <h2 className='text-5xl font-bold'>Elevating Basketball Analysis Worldwide</h2>

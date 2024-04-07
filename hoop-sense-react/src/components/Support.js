@@ -5,7 +5,7 @@ import { EnvelopeIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 function Support() {
   return (
-    <div className='w-full h-screen mt-24' >
+    <div id='support-section' className='w-full h-screen mt-24' >
         <div className='w-full h-[700px] bg-gray-900/90 absolute'>
         </div>
         

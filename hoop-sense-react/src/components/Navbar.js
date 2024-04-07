@@ -8,6 +8,28 @@ const Navbar = () => {
     const [nav, setNav] = useState(false)
     const handleClick = () => setNav(!nav)
 
+    // This function will handle scrolling to the About section
+    const scrollToAbout = () => {
+    // Close the navbar if it's open on mobile
+    setNav(false);
+    
+    // Scroll to the About section
+    const aboutSection = document.getElementById('about-section');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }}
+
+    const scrollToSupport = () => {
+        setNav(false)
+    
+
+    const supportSection = document.getElementById('support-section');
+    if (supportSection) {
+        supportSection.scrollIntoView({ behavior: 'smooth'})
+    }}
+
+
+
     return (
         <>
             
@@ -35,9 +57,9 @@ const Navbar = () => {
                         <ul className="hidden md:flex">
                                 
 
-                                <Link to="/Home" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3' >Home</Link>
-                                <Link to="/About" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3 '>About</Link>
-                                <Link to="/Support" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 '>Support</Link>
+                                <a to="/Home" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3' >Home</a>
+                                <a to="/About" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3' onClick={scrollToAbout}>About</a>
+                                <a to="/Support" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3' onClick={scrollToSupport}>Support</a>
                         </ul>
                         
                        
@@ -61,7 +83,7 @@ const Navbar = () => {
 
                     <div className="flex flex-col my-4">
                         <Link to='/Home' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3'>Home</Link>
-                        <Link to='/Login' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3'>About</Link>
+                        <Link to='/About' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3' onClick={scrollToAbout}>About</Link>
                         <Link to='/Support' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 '>Support</Link>
                     </div>
                   
