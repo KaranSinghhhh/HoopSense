@@ -7,27 +7,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
     const [nav, setNav] = useState(false)
     const handleClick = () => setNav(!nav)
-
-    // This function will handle scrolling to the About section
-    const scrollToAbout = () => {
-    // Close the navbar if it's open on mobile
-    setNav(false);
     
-    // Scroll to the About section
-    const aboutSection = document.getElementById('about-section');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }}
-
-    const scrollToSupport = () => {
-        setNav(false)
-    
-
-    const supportSection = document.getElementById('support-section');
-    if (supportSection) {
-        supportSection.scrollIntoView({ behavior: 'smooth'})
-    }}
-
 
 
     return (
@@ -38,11 +18,13 @@ const Navbar = () => {
                     <div className="flex items-center">
                         <h1 className="text-3xl font-bold mr-4 mt-3 sm:text-4xl">HoopSense</h1>
                         
+                            {/*
                             <ul className="hidden md:flex pr-4 mt-4">
                                 <Link to='/playerStats' className='flex px-4 py-3 text-slate-500'>Player Stats</Link>
                                 <Link to='/teamStats' className='flex px-4 py-3 text-slate-500'>Team Stats</Link>
-                                {/*<Link to='/compareStats' className='flex px-4 py-3 text-slate-500'>Player or Team Comparisons</Link>*/}
+                                <Link to='/compareStats' className='flex px-4 py-3 text-slate-500'>Player or Team Comparisons</Link>
                             </ul>
+                            */}
                        
 
                         {/*<ul className="hidden md:flex">
@@ -56,15 +38,15 @@ const Navbar = () => {
                     <div className="hidden md:flex pr-4">
                         <ul className="hidden md:flex">
                                 <button className="rounded-md px-8 py-3 ml-3 ">
-                                    <a to="/Home">Home</a>
+                                    <Link to="/">Home</Link>
                                 </button>
                                 
                                 <button className="rounded-md px-8 py-3 ml-3 ">
-                                    <a to="/About" onClick={scrollToAbout}>About</a>
+                                    <Link to='/playerStats' >Player Stats</Link>
                                 </button>
                                 
                                 <button className="rounded-md px-8 py-3 ml-3 ">
-                                    <a to="/Support" onClick={scrollToSupport}>Support</a>
+                                    <Link to='/teamStats'>Team Stats</Link>
                                 </button>
                         </ul>
                         
@@ -73,7 +55,7 @@ const Navbar = () => {
                        <Link to='/login' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 '>Log in</Link>*/}
                     </div>
                     
-                    <div className='md:hidden mr-4 cursor: cursor-pointer' onClick={handleClick}>
+                    <div className='md:hidden mr-4 cursor: cursor-pointer' onClick={handleClick} >
                         {!nav ? <Bars3Icon className="w-5" /> : <XMarkIcon className="w-5"/>}
                         
                     
@@ -82,15 +64,17 @@ const Navbar = () => {
                 
                 <ul className = {!nav ? 'hidden' : 'absolute bg-zinc-200 w-full px-8'}>
                     
+                    {/*
                     <div className="flex flex-col my-4">
                         <Link to="/playerStats" className="px-4 py-3 border-b-2 border-zinc-300 w-full">Player Stats</Link>
                         <Link to="/teamStats" className="px-4 py-3 border-b-2 border-zinc-300 w-full">Team Stats</Link>
                     </div>
+                    */}
 
                     <div className="flex flex-col my-4">
-                        <Link to='/Home' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3'>Home</Link>
-                        <Link to='/About' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3' onClick={scrollToAbout}>About</Link>
-                        <Link to='/Support' className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 '>Support</Link>
+                        <Link to='/Home' className= 'text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3'>Home</Link>
+                        <Link to="/playerStats" className= "text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3">Player Stats</Link>
+                        <Link to="/teamStats" className="text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3">Team Stats</Link>
                     </div>
                   
                     
