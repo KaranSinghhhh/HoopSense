@@ -3,8 +3,7 @@ import shooting_ball from '../assets/nba_img.png';
 
 import { FaUser, FaUsers, FaPlusSquare, FaCalendarAlt } from 'react-icons/fa';
 import { AiOutlineTeam } from 'react-icons/ai';
-import { BiStats } from 'react-icons/bi';
-import { RiBarChartHorizontalFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom'
 
 import './Heros.css'; // Importing the custom CSS
 
@@ -16,7 +15,7 @@ const Heros = () => {
                 <p className='showcase-text'></p>
                 <h1 className='main-heading'>Basketball Data Insights</h1>
                 <p className='subheading'>Your ultimate source for NBA statistics</p>
-                <button className='get-started-btn'>Get Started</button>
+                
             </div>
             <div className='image-container'>
                 <img className='nba-image' src={shooting_ball} alt='/'/>

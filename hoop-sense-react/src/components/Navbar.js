@@ -37,17 +37,10 @@ const Navbar = () => {
                     
                     <div className="hidden md:flex pr-4">
                         <ul className="hidden md:flex">
-                                <button className="rounded-md px-8 py-3 ml-3 ">
-                                    <Link to="/">Home</Link>
-                                </button>
-                                
-                                <button className="rounded-md px-8 py-3 ml-3 ">
-                                    <Link to='/playerStats' >Player Stats</Link>
-                                </button>
-                                
-                                <button className="rounded-md px-8 py-3 ml-3 ">
-                                    <Link to='/teamStats'>Team Stats</Link>
-                                </button>
+                            <Link to='/' className= 'text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3 mr-3'>Home</Link>
+                            <Link to="/playerStats" className= "text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3 mr-3">Player Stats</Link>
+                            <Link to="/teamStats" className="text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3">Team Stats</Link>
+
                         </ul>
                         
                        
@@ -72,7 +65,7 @@ const Navbar = () => {
                     */}
 
                     <div className="flex flex-col my-4">
-                        <Link to='/Home' className= 'text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3'>Home</Link>
+                        <Link to='/' className= 'text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3'>Home</Link>
                         <Link to="/playerStats" className= "text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3">Player Stats</Link>
                         <Link to="/teamStats" className="text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3">Team Stats</Link>
                     </div>

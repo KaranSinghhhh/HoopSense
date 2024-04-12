@@ -2,6 +2,7 @@ import React from 'react'
 import shooting_ball from '../assets/nba_img.png'
 
 import { FaUser, FaUsers } from 'react-icons/fa';
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
@@ -14,7 +15,9 @@ const Hero = () => {
                 <p className='text-2xl'>Your ultimate source for NBA statistics</p>
                 </div>
                 <div className='flex justify-center w-full my-4'>
-                  <button className='py-3 px-6 sm:w-[60%] my-4'>Get Started</button>
+                  
+                    <Link to='/playerStats' className="text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3">Get Started</Link>
+                  
                 </div>
             </div>
             <div className='flex justify-center py-8'>
