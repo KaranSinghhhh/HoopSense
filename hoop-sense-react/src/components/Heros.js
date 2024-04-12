@@ -10,7 +10,7 @@ import './Heros.css'; // Importing the custom CSS
 
 const Heros = () => {
   return (
-    <div className='hero-container'>
+    <div id="home-section" className='hero-container'>
         <div className='hero-content'>
             <div className='text-content'>
                 <p className='showcase-text'></p>

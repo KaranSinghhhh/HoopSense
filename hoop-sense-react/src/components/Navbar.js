@@ -55,11 +55,17 @@ const Navbar = () => {
                     
                     <div className="hidden md:flex pr-4">
                         <ul className="hidden md:flex">
+                                <button className="rounded-md px-8 py-3 ml-3 ">
+                                    <a to="/Home">Home</a>
+                                </button>
                                 
-
-                                <a to="/Home" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3' >Home</a>
-                                <a to="/About" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mr-3' onClick={scrollToAbout}>About</a>
-                                <a to="/Support" className=' text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3' onClick={scrollToSupport}>Support</a>
+                                <button className="rounded-md px-8 py-3 ml-3 ">
+                                    <a to="/About" onClick={scrollToAbout}>About</a>
+                                </button>
+                                
+                                <button className="rounded-md px-8 py-3 ml-3 ">
+                                    <a to="/Support" onClick={scrollToSupport}>Support</a>
+                                </button>
                         </ul>
                         
                        
