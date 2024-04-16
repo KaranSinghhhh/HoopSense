@@ -37,9 +37,9 @@ const Navbar = () => {
                     
                     <div className="hidden md:flex pr-4">
                         <ul className="hidden md:flex">
-                            <Link to='/' className= 'text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3 mr-3'>Home</Link>
-                            <Link to="/playerStats" className= "text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3 mr-3">Player Stats</Link>
-                            <Link to="/teamStats" className="text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3">Team Stats</Link>
+                            <Link to='/' className= 'text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3 mr-3 mt-6'>Home</Link>
+                            <Link to="/playerStats" className= "text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3 mr-3 mt-6">Player Stats</Link>
+                            <Link to="/teamStats" className="text-white border bg-indigo-600 border-indigo-600 hover:bg-transparent hover:text-indigo-600 rounded-md px-8 py-3 mb-3 mt-6">Team Stats</Link>
 
                         </ul>
                         

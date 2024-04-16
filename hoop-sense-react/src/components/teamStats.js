@@ -11,7 +11,6 @@ function TeamStats() {
  const [searchTerm, setSearchTerm] = useState('');
  const [currentView, setCurrentView] = useState(''); // 'traditional', 'defensive', 'advanced'
  const [borderTeamColor, setBorderTeamColor] = useState('bg-gray-200')
-
  const [filteredTeams, setFilteredTeams] = useState([]);
  const inputRef = useRef(null); // Reference to the input field
   
