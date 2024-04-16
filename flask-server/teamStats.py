@@ -76,10 +76,59 @@ def search_player():
     else:
         return {"error": "Database connection failed"}, 500  
 
+def fetch_traditional_stats():
+    url = f"https://stats.nba.com/stats/leaguedashteamstats?Conference=&DateFrom=&DateTo=&Division=&GameScope=&GameSegment=&Height=&ISTRound=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PORound=0&PaceAdjust=N&{per_mode}=PerGame&Period=0&PlayerExperience=&PlayerPosition=&PlusMinus=N&Rank=N&Season={season_id}&SeasonSegment=&SeasonType=Regular%20Season&ShotClockRange=&StarterBench=&TeamID=0&TwoWay=0&VsConference=&VsDivision="
+
+    headers = {
+    'Connection': 'keep-alive',
+    'Accept': 'application/json, text/plain, */*',
+    'x-nba-stats-token': 'true',
+    'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS like Mac OS X) AppleWebKit (KHTML, like Gecko) Version Mobile Safari',
+    'x-nba-stats-origin': 'stats',
+    'Sec-Fetch-Site': 'same-origin',
+    'Sec-Fetch-Mode': 'cors',
+    'Referer': 'https://stats.nba.com/',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'en-US,en;q=0.9',
+    }
+    
+    response = requests.get(url, headers=headers)
+    return response.json()['resultSets'][0]['rowSet']
+
+@app.route('/updateTraditionalStats', methods=['GET'])
+@cross_origin()
+def update_traditional_stats():
+    team_stats = fetch_traditional_stats()
+    if not team_stats:
+        return {"error": "Failed to fetch data"}, 500
+
+    connection = get_database_connection()
+    if not connection:
+        return {"error": "Database connection failed"}, 500
+
+    try:
+        cursor = connection.cursor()
+        insert_query = """
+        REPLACE INTO TEAMS_TRADITIONAL_STATS_2023_24 (TEAM_ID, TEAM_NAME, GP, W, L, FGM, FGA, FG_PCT, FG3M, FG3A, FG3_PCT, FTM, FTA, FT_PCT, REB, OREB, DREB, AST, TOV, STL, BLK, BLKA, PF, PFD, PTS, PLUS_MINUS)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,)
+        """
+        for team in team_stats:
+            cursor.execute(insert_query, team)
+        connection.commit()
+        return jsonify({"meseage": "Data updated successfully"}), 200
+    except mysql.connector.Error as err:
+        connection.rollback()
+        return jsonify({"error": str(err)}), 500
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
+
+
 @app.route('/TeamStats/traditional', methods=['GET'])
 @cross_origin()
 
-def search_team():
+def search_traditional_team():
     """Endpoint to search for a team by name"""
     team_name_query = request.args.get('name', default='', type=str)
     connection = get_database_connection()
@@ -87,7 +136,7 @@ def search_team():
         try:
             cursor = connection.cursor(dictionary=True)
             query = """
-            SELECT TEAM_NAME, GP, W, L, FGM, FGA, FG_PCT, FG3M, FG3A, FG3_PCT, FTM, FTA, FT_PCT, REB, OREB, DREB, AST, TOV, STL, BLK, BLKA, PF, PFD, PTS, PLUS_MINUS, FGM_RANK, FGA_RANK, FG_PCT_RANK, FG3M_RANK, FG3A_RANK, FG3_PCT_RANK, FTM_RANK, FTA_RANK, FT_PCT_RANK, OREB_RANK, DREB_RANK, REB_RANK, AST_RANK, TOV_RANK, STL_RANK, BLK_RANK, BLKA_RANK, PF_RANK, PFD_RANK, PTS_RANK, PLUS_MINUS_RANK FROM TEAMS_2023_24
+            SELECT TEAM_NAME, GP, W, L, FGM, FGA, FG_PCT, FG3M, FG3A, FG3_PCT, FTM, FTA, FT_PCT, REB, OREB, DREB, AST, TOV, STL, BLK, BLKA, PF, PFD, PTS, PLUS_MINUS, FGM_RANK, FGA_RANK, FG_PCT_RANK, FG3M_RANK, FG3A_RANK, FG3_PCT_RANK, FTM_RANK, FTA_RANK, FT_PCT_RANK, OREB_RANK, DREB_RANK, REB_RANK, AST_RANK, TOV_RANK, STL_RANK, BLK_RANK, BLKA_RANK, PF_RANK, PFD_RANK, PTS_RANK, PLUS_MINUS_RANK FROM TEAMS_TRADITIONAL_2023_24
             WHERE TEAM_NAME LIKE %s
             """
             cursor.execute(query, (f"%{team_name_query}%",))
@@ -168,7 +217,7 @@ def search_defensive_team():
             cursor.close()
             connection.close()
 
-def fetch_afvanced_stats():
+def fetch_advanced_stats():
    url = f"https://stats.nba.com/stats/leaguedashteamstats?Conference=&DateFrom=&DateTo=&Division=&GameScope=&GameSegment=&Height=&ISTRound=&LastNGames=0&LeagueID=00&Location=&MeasureType=Advanced&Month=0&OpponentTeamID=0&Outcome=&PORound=0&PaceAdjust=N&{per_mode}=PerGame&Period=0&PlayerExperience=&PlayerPosition=&PlusMinus=N&Rank=N&Season={season_id}&SeasonSegment=&SeasonType=Regular%20Season&ShotClockRange=&StarterBench=&TeamID=0&TwoWay=0&VsConference=&VsDivision="
 
    headers = {
@@ -190,7 +239,7 @@ def fetch_afvanced_stats():
 @app.route('/updateAdvancedStats', methods=['GET'])
 @cross_origin()
 def update_advanced_stats():
-    team_stats = fetch_afvanced_stats()
+    team_stats = fetch_advanced_stats()
     if not team_stats:
         return {"error": "Failed to fetch data"}, 500
 
