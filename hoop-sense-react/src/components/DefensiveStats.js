@@ -97,7 +97,7 @@ function DefensiveStats({ searchTerm, teamColors, statColors }) { // Define the 
                     
                     </div>
                 </div>))
-                ) : (<p>No Data Found</p>)}
+                ) : (<p>No Data Found. Please Search for a Team.</p>)}
     </div>
   );
       

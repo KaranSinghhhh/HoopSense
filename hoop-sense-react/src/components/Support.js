@@ -30,7 +30,17 @@ function Support() {
                 </div>
             </div>
         </div>
+
+        <div className='w-full px-4 py-12 bg-gray-900 text-white text-center'>
+            <h1 className='text-xl font-semibold'>Disclaimer</h1>
+            <p className='text-md mt-2'>All intellectual property rights related to NBA teams and their statistics are the exclusive property of the NBA and the respective teams. This project is independently created and is not affiliated with, endorsed by, or sponsored by the NBA or any of its teams.</p>
+            <p className='text-md mt-2'>This is simply an educational project and has no motive or any features for revenue and profit.</p>
+            <p className='text-md mt-2'>All rights reserved to the respective trademark owners.</p>
+        </div>
+
+
     </div>
+    
   )
 }
 
