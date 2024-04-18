@@ -8,9 +8,9 @@ const Hero = () => {
   return (
     <div className='w-full min-h-screen bg-zinc-200 flex flex-col justify-between'>
         <div className='max-w-[1240px] mx-auto px-2 py-8'>
-            <div className='flex flex-col justify-center items-start'>
-                <p className='text-2xl'>Showcasing the Game with NBA Analytics</p>
-                <h1 className='py-3 mt-3 text-5xl md:text-7xl font-bold'>Basketball Data Insights</h1>
+            <div className='flex flex-col justify-center items-center'>
+                <p className='mt-[80px] text-2xl text-center'>Showcasing the Game with NBA Analytics</p>
+                <h1 className='py-3 mt-3 text-4xl md:text-7xl font-bold'>Basketball Data Insights</h1>
                 <div className='flex justify-center w-full my-4'>
                 <p className='text-2xl'>Your ultimate source for NBA statistics</p>
                 </div>

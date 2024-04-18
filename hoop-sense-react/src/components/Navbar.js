@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Bars3Icon from '@heroicons/react/24/outline/Bars3Icon'; 
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon'; 
 import { Link } from 'react-router-dom'
@@ -7,6 +7,20 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
     const [nav, setNav] = useState(false)
     const handleClick = () => setNav(!nav)
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 768) {
+                setNav(false); // Automatically close the dropdown on window resize when width is more than 768px
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     
 
 
