@@ -25,7 +25,7 @@ function Support() {
                         <p className='text-gray-600 text-xl'>For inquiries, support, or feedback, reach out to our team. We're here to help you navigate the stats and enhance your basketball knowledge.</p>
                     </div>
                     <div className='bg-slate-100 pl-8 py-4'>
-                        <p className='flex items-center text-indigo-600'>Get In Touch <ArrowRightIcon className='w-5 ml-2'/><a className='ml-2'>karandeepsingh8860@gmail.com</a></p>
+                        <p className='flex items-center text-indigo-600'>Get In Touch <ArrowRightIcon className='w-5 ml-2'/><a className='ml-2' href={`mailto:karandeepsingh8860@gmail.com`}>karandeepsingh8860@gmail.com</a></p>
                     </div>
                 </div>
             </div>
