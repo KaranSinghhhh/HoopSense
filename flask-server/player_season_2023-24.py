@@ -143,13 +143,13 @@ with open('nba_players_data_2020-2021.csv', 'w', newline='', encoding='utf-8') a
 '''
 
 check_query = """
-SELECT COUNT(*) FROM TEAMS_ADVANCED_2023_24 WHERE GP > 0;
+SELECT COUNT(*) FROM NBA_PLAYERS_2023_24 WHERE GP > 0;
 """
 try:
     mycursor.execute(check_query)
     result = mycursor.fetchone()
     if result[0] > 0:
-        print("Error: Data for the 2023-24 Advanced season already exists. Running this script again will result in duplicate entries.")
+        print("Error: Data for the 2023-24 player stats season already exists. Running this script again will result in duplicate entries.")
         sys.exit(1)  # Exit the script to prevent duplicate runs
 except mysql.connector.Error as err:
     print("Error checking existing data:", err)
@@ -160,7 +160,7 @@ except mysql.connector.Error as err:
 
 
 create_table_query = """
-CREATE TABLE IF NOT EXISTS PLAYERS_2023_24 (
+CREATE TABLE IF NOT EXISTS NBA_PLAYERS_2023_24 (
    PLAYER_ID INT,
    PLAYER_NAME VARCHAR(255),
    NICKNAME VARCHAR(255),
@@ -232,7 +232,7 @@ CREATE TABLE IF NOT EXISTS PLAYERS_2023_24 (
 """
 
 insert_statement = """
-INSERT INTO PLAYERS_2023_24 (
+INSERT INTO NBA_PLAYERS_2023_24 (
 PLAYER_ID,
 PLAYER_NAME,
 NICKNAME,

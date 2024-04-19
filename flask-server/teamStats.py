@@ -31,7 +31,7 @@ def get_player_names():
         try:
             cursor = connection.cursor(dictionary=True)
             query = """
-            SELECT DISTINCT PLAYER_NAME FROM PLAYERS_2023_24
+            SELECT DISTINCT PLAYER_NAME FROM NBA_PLAYERS_2023_24
             """
             cursor.execute(query)
             results = cursor.fetchall()
@@ -59,10 +59,7 @@ def search_player():
         try:
             cursor = connection.cursor(dictionary=True)
             query = """
-            SELECT PLAYER_NAME, AGE, TEAM_ABBREVIATION, GP, W, L, W_PCT, MIN, FGM, FGA, FG_PCT, FG3M, FG3A, FG3_PCT, FTM, FTA, FT_PCT, OREB, DREB, REB, AST, TOV, STL, BLK, BLKA, PF, PFD, PTS, PLUS_MINUS,       MIN_RANK, FGM_RANK, FGA_RANK, FG_PCT_RANK, FG3M_RANK, FG3A_RANK, FG3_PCT_RANK, FTM_RANK, FTA_RANK, FT_PCT_RANK, OREB_RANK, DREB_RANK, REB_RANK, AST_RANK, TOV_RANK, STL_RANK, BLK_RANK, BLKA_RANK, PF_RANK, PFD_RANK, PTS_RANK, PLUS_MINUS_RANK FROM PLAYERS_2023_24
-            
-      
-            
+            SELECT PLAYER_NAME, AGE, TEAM_ABBREVIATION, GP, W, L, W_PCT, MIN, FGM, FGA, FG_PCT, FG3M, FG3A, FG3_PCT, FTM, FTA, FT_PCT, OREB, DREB, REB, AST, TOV, STL, BLK, BLKA, PF, PFD, PTS, PLUS_MINUS,       MIN_RANK, FGM_RANK, FGA_RANK, FG_PCT_RANK, FG3M_RANK, FG3A_RANK, FG3_PCT_RANK, FTM_RANK, FTA_RANK, FT_PCT_RANK, OREB_RANK, DREB_RANK, REB_RANK, AST_RANK, TOV_RANK, STL_RANK, BLK_RANK, BLKA_RANK, PF_RANK, PFD_RANK, PTS_RANK, PLUS_MINUS_RANK FROM NBA_PLAYERS_2023_24
             WHERE PLAYER_NAME LIKE %s
             """
             cursor.execute(query, (f"%{team_name_query}%",))
