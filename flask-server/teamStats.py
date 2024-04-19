@@ -1,8 +1,12 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 import mysql.connector
 from mysql.connector import Error
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()  # load environment variables from .env file
 
 app = Flask(__name__)
 
@@ -12,10 +16,10 @@ def get_database_connection():
     """Function to connect to the database"""
     try:
         connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="password",
-            database="HoopSense"
+            host=os.getenv("DB_HOST"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            database=os.getenv("DB_NAME")
         )
         return connection
     except Error as e:
@@ -290,4 +294,4 @@ def search_advanced_team():
         return {"error": "Database connection failed"}, 500
     
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run()
