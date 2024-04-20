@@ -1,11 +1,8 @@
 // TeamStats.js
 import React, { useState, useEffect, useRef } from 'react';
-import { FaSearch } from 'react-icons/fa';
 import TraditionalStats from './TraditionalStats';
 import DefensiveStats from './DefensiveStats';
 import AdvancedStats from './AdvancedStats';
-
-
 
 function TeamStats() {
  const [searchTerm, setSearchTerm] = useState('');
