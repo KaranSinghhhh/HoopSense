@@ -3,4 +3,3 @@ gunicorn==20.0.4
 requests==2.25.1
 mysql-connector-python==8.0.23
 dotenv-python  # The actual name of the package is dotenv-python
-Werkzeug==1.0.1  # Limit Werkzeug to a version below 2.0

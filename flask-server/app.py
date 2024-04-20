@@ -5,6 +5,7 @@ import mysql.connector
 from mysql.connector import Error
 import requests
 from dotenv import load_dotenv
+from werkzeug.datastructures import URL
 
 load_dotenv()  # load environment variables from .env file
 
