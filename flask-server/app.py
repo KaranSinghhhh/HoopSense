@@ -128,7 +128,7 @@ def update_traditional_stats():
 
 
 @app.route('/TeamStats/traditional', methods=['GET'])
-@cross_origin()
+@cross_origin(origin='https://hoopsense.netlify.app')
 
 def search_traditional_team():
     """Endpoint to search for a team by name"""
