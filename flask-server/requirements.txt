@@ -2,4 +2,5 @@ Flask==2.0.1
 gunicorn==20.0.4
 requests==2.25.1
 mysql-connector-python==8.0.23
-dotenv-python  # The actual name of the package is dotenv-python
+dotenv-python
+Werkzeug==2.1.2  
