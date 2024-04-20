@@ -8,7 +8,7 @@ function AdvancedStats({ searchTerm, teamColors, statColors }) {
   useEffect(() => {
     const fetchStats = async () => {
       if (searchTerm) {
-        const url = `http://hoopsense-env.eba-npvrdy8p.us-east-2.elasticbeanstalk.com/TeamStats/advanced?name=${encodeURIComponent(searchTerm)}`;
+        const url = `https://hoopsense-2ba36e22b73d.herokuapp.com/TeamStats/advanced?name=${encodeURIComponent(searchTerm)}`;
         try {
           const response = await fetch(url, {
             method: 'GET',

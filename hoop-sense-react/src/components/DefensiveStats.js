@@ -8,7 +8,7 @@ function DefensiveStats({ searchTerm, teamColors, statColors }) { // Define the 
   useEffect(() => {
     const fetchDefensiveStats = async () => { // Declare an async function
       if (searchTerm) { // Check if searchTerm is truthly 
-        const url = `http://localhost:5001/TeamStats/defensive?name=${encodeURIComponent(searchTerm)}`; //construct url for API request
+        const url = `https://hoopsense-2ba36e22b73d.herokuapp.com/defensive?name=${encodeURIComponent(searchTerm)}`; //construct url for API request
         try {
           const response = await fetch(url, { // Make an async HTTP GET request to the specified url
             method: 'GET', 
