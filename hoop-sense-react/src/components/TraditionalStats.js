@@ -8,7 +8,7 @@ function TraditionalStats({ searchTerm, teamColors, statColors }) {
   useEffect(() => {
     const fetchStats = async () => {
       if (searchTerm) {
-        const url = `https://hoopsense-2ba36e22b73d.herokuapp.com/TeamStats/traditional?name=${encodeURIComponent(searchTerm)}`;
+        const url = `https://myhoopsenseproject-1f473fbb7d55.herokuapp.com/TeamStats/traditional?name=${encodeURIComponent(searchTerm)}`;
         try {
           const response = await fetch(url, {
             method: 'GET',

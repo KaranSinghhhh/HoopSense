@@ -5,13 +5,19 @@ import mysql.connector
 from mysql.connector import Error
 import requests
 from dotenv import load_dotenv
-from werkzeug.datastructures import URL
+from urllib.parse import urlparse, urlunparse  
+
+
 
 load_dotenv()  # load environment variables from .env file
 
 app = Flask(__name__)
 
 CORS(app)
+
+@app.route('/')
+def home():
+    return "Welcome to HoopSense!"  # You can customize this message
 
 def get_database_connection():
     """Function to connect to the database"""
@@ -145,7 +151,8 @@ def search_traditional_team():
             results = cursor.fetchall()
             return jsonify(results)
         except Error as e:
-            return {"error": str(e)}, 500
+            app.logger.error(f"Error: {e}")
+            return jsonify({"error": str(e)}), 500
         finally:
             cursor.close()
             connection.close()
@@ -295,4 +302,4 @@ def search_advanced_team():
         return {"error": "Database connection failed"}, 500
     
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
