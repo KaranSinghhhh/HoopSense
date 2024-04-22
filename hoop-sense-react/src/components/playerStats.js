@@ -115,7 +115,7 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
   
           <div key={index} className='mb-4'>
             <h1>{player.PLAYER_NAME}</h1>
-            <p>Age: {player.PLAYER_AGE} | Team: {player.TEAM_ABBREVIATION}</p>
+            <p>Age: {player.AGE} | Team: {player.TEAM_ABBREVIATION}</p>
             <p>Games Played: {player.GP}</p>
             <p>W: {player.W} | L: {player.L}</p>
             
