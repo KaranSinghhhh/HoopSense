@@ -14,10 +14,10 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
     // Fetch player names from the API
     const fetchPlayerNames = async () => {
       try {
-        const response = await fetch('http://localhost:5001/PlayerNames'); // Adjust URL as needed
+        const response = await fetch('https://myhoopsenseproject-1f473fbb7d55.herokuapp.com/PlayerNames'); 
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
-        setPlayerNames(data.map(player => player.PLAYER_NAME)); // Adjust based on your API response structure
+        setPlayerNames(data.map(player => player.PLAYER_NAME)); // Adjust based on API response structure
       } catch (error) {
         console.error('Error fetching player names:', error);
       }
@@ -29,7 +29,7 @@ function PlayerStats() { // Capitalize the first letter to conform to React comp
   useEffect(() => {
     const fetchPlayerStats = async () => {
       if (searchTerm) {
-        const url = `http://localhost:5001/PlayerStats?name=${encodeURIComponent(searchTerm)}`;
+        const url = `https://myhoopsenseproject-1f473fbb7d55.herokuapp.com/PlayerStats?name=${encodeURIComponent(searchTerm)}`;
         try {
           const response = await fetch(url, {
             method: 'GET',
